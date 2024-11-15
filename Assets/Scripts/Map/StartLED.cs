@@ -18,13 +18,13 @@ public class StartLED : MonoBehaviour
         StartCoroutine(ChangeLights());
     }
 
-    IEnumerator ChangeLights()
+    public IEnumerator ChangeLights()
     {
-        lightA.material = StartLEDRed;
+        lightC.material = StartLEDRed;
         yield return wait;
         lightB.material = StartLEDRed;
         yield return wait;
-        lightC.material = StartLEDRed;
+        lightA.material = StartLEDRed;
         yield return wait;
         lightA.material = StartLEDGreen; 
         lightB.material = StartLEDGreen;

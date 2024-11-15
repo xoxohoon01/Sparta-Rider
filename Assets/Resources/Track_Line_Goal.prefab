@@ -115,6 +115,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7276925260861940167}
     m_Modifications:
+    - target: {fileID: 1175680598327649643, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 1249279903010469781, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.601493
@@ -163,6 +167,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1769518826879451636, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 1881807414035574063, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
       propertyPath: m_Name
       value: prop_startlights
@@ -183,6 +191,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8476553160596616854, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 8783601704216093565, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -215,22 +227,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartLEDRed: {fileID: 2100000, guid: ec63e2f99ff7d0c4ba51bea1b8e48be6, type: 2}
   StartLEDGreen: {fileID: 2100000, guid: cb8718304d7c8144b9cbc1ab90cc0ed2, type: 2}
-  lightA: {fileID: 1205176519286485069}
-  lightB: {fileID: 3555675407610438308}
-  lightC: {fileID: 2491782903115829834}
---- !u!1 &1205176519286485069 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6342318897081938324, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+  lightA: {fileID: 5779036658013995053}
+  lightB: {fileID: 4404257617836635983}
+  lightC: {fileID: 6407794895096243378}
+--- !u!23 &4404257617836635983 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8476553160596616854, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
   m_PrefabInstance: {fileID: 5241579495234109913}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2491782903115829834 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7649719790348194707, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+--- !u!23 &5779036658013995053 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1769518826879451636, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
   m_PrefabInstance: {fileID: 5241579495234109913}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3555675407610438308 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8783601704216093565, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+--- !u!23 &6407794895096243378 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1175680598327649643, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
   m_PrefabInstance: {fileID: 5241579495234109913}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6479415100215113292 stripped

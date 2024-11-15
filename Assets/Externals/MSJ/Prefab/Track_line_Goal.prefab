@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6004159689186684514}
   - component: {fileID: 8410463666442459816}
   - component: {fileID: -4180479327332058295}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Track_line_Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +156,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1689729126400742586, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.401
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689729126400742586, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
       propertyPath: m_LocalPosition.z
       value: 7
       objectReference: {fileID: 0}
@@ -163,12 +167,72 @@ PrefabInstance:
       propertyPath: m_Name
       value: prop_startlights
       objectReference: {fileID: 0}
+    - target: {fileID: 1881807414035574063, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342318897081938324, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358068928651051753, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649719790348194707, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8783601704216093565, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6081603150401015926, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6358068928651051753, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2190529597666133532}
   m_SourcePrefab: {fileID: 100100000, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+--- !u!1 &1189428343009133360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6358068928651051753, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+  m_PrefabInstance: {fileID: 5241579495234109913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2190529597666133532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189428343009133360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa377cda247503f4aa6638412005e97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartLEDRed: {fileID: 2100000, guid: ec63e2f99ff7d0c4ba51bea1b8e48be6, type: 2}
+  StartLEDGreen: {fileID: 2100000, guid: cb8718304d7c8144b9cbc1ab90cc0ed2, type: 2}
+  lightA: {fileID: 1205176519286485069}
+  lightB: {fileID: 3555675407610438308}
+  lightC: {fileID: 2491782903115829834}
+--- !u!1 &1205176519286485069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6342318897081938324, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+  m_PrefabInstance: {fileID: 5241579495234109913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2491782903115829834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7649719790348194707, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+  m_PrefabInstance: {fileID: 5241579495234109913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3555675407610438308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8783601704216093565, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}
+  m_PrefabInstance: {fileID: 5241579495234109913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6479415100215113292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1249279903010469781, guid: 96412b3f37e36db428c1a5ebe790fbe1, type: 3}

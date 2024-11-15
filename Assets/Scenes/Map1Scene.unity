@@ -309,24 +309,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1451767377 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1809584770815052654, guid: 8e487246e934ef0428932a468b5e2831, type: 3}
-  m_PrefabInstance: {fileID: 6558208724764675647}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1451767381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451767377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa377cda247503f4aa6638412005e97b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &6558208724764675647
+--- !u!1001 &4280425144916980633
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -337,14 +320,6 @@ PrefabInstance:
     - target: {fileID: 4344472094809365571, guid: 8e487246e934ef0428932a468b5e2831, type: 3}
       propertyPath: m_Name
       value: Map1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6220480935212473661, guid: 8e487246e934ef0428932a468b5e2831, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.401
-      objectReference: {fileID: 0}
-    - target: {fileID: 6220480935212473661, guid: 8e487246e934ef0428932a468b5e2831, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7743617279066138372, guid: 8e487246e934ef0428932a468b5e2831, type: 3}
       propertyPath: m_LocalPosition.x
@@ -389,10 +364,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1809584770815052654, guid: 8e487246e934ef0428932a468b5e2831, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1451767381}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e487246e934ef0428932a468b5e2831, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -400,4 +372,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 11823660}
   - {fileID: 2067526}
-  - {fileID: 6558208724764675647}
+  - {fileID: 4280425144916980633}

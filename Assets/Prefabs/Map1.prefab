@@ -194,26 +194,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 921512548081453282}
     m_Modifications:
-    - target: {fileID: 1189428343009133360, guid: 419b5557461398443a4b99d9496015fc, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1205176519286485069, guid: 419b5557461398443a4b99d9496015fc, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2491782903115829834, guid: 419b5557461398443a4b99d9496015fc, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3555675407610438308, guid: 419b5557461398443a4b99d9496015fc, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5953847874431216886, guid: 419b5557461398443a4b99d9496015fc, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7276925260861940167, guid: 419b5557461398443a4b99d9496015fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -257,10 +237,6 @@ PrefabInstance:
     - target: {fileID: 8049907621329533821, guid: 419b5557461398443a4b99d9496015fc, type: 3}
       propertyPath: m_Name
       value: Track_line_Goal
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049907621329533821, guid: 419b5557461398443a4b99d9496015fc, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

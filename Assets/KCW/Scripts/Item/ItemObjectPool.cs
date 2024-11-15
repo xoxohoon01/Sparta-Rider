@@ -7,8 +7,8 @@ public class ItemObjectPool : MonoBehaviour
     [System.Serializable]
     public class Pool
     {
-        public ItemType type;
         public GameObject prefab;
+        public ItemSO itemSO;
         public int size;
     }
 
@@ -25,12 +25,12 @@ public class ItemObjectPool : MonoBehaviour
             Queue<GameObject> queue = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {
-                GameObject _obj = Instantiate(pool.prefab);
-                _obj.SetActive(false);
-                queue.Enqueue(_obj);
+                GameObject obj = Instantiate(pool.prefab);
+                obj.SetActive(false);
+                queue.Enqueue(obj);
             }
 
-            PoolDictionary.Add(pool.type, queue);
+            PoolDictionary.Add(pool.itemSO.type, queue);
         }
     }
 
@@ -41,9 +41,9 @@ public class ItemObjectPool : MonoBehaviour
             return null;
         }
 
-        GameObject _obj = PoolDictionary[type].Dequeue();
-        PoolDictionary[type].Enqueue(_obj);
+        GameObject obj = PoolDictionary[type].Dequeue();
+        PoolDictionary[type].Enqueue(obj);
 
-        return _obj;
+        return obj;
     }
 }

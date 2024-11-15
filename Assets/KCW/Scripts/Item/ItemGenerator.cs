@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class ItemGenerator : MonoBehaviour
 {
-    private ItemObjectPool objectPool;
-    public float spawnTime;
-    private float lastSpawnTime;
+    private WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
+    
+    public ItemObjectPool objectPool;
+    public GameObject item;
 
     private void Awake()
     {
         objectPool = GetComponent<ItemObjectPool>();
     }
 
-    void Update()
+    public void Generate()
     {
-        lastSpawnTime += Time.deltaTime;
-        if (lastSpawnTime >= spawnTime)
-        {
-            lastSpawnTime = 0f;
-
-            ItemType _type = (ItemType)Random.Range(0, (int)ItemType.Count);
-            GameObject _obj = objectPool.SpawnFromPool(_type);
-            _obj.transform.position = transform.position;
-            _obj.SetActive(true);
-        }
+        ItemType _type = (ItemType)Random.Range(0, (int)ItemType.Count);
+        GameObject _item = objectPool.SpawnFromPool(_type);
+        // Item을 Player에게 반환하기!!!
+        item = _item;
+        Debug.Log("Item SetActive");
     }
 }

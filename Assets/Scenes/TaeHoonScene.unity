@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -362,6 +362,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &1141733113
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7208422783479980313, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_Name
+      value: Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050395535666832690, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050395535666832690, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.763029e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050395535666832690, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.30457976
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050395535666832690, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9708458
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050395535666832690, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050395535666832690, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.23970485
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050395535666832690, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050395535666832690, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050395535666832690, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 27.664001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050395535666832690, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e474e16fb5acde848bfa28b24ff2727d, type: 3}
 --- !u!4 &1337742312 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4121091811543137509, guid: ddf4ea2625767fd4bb4153e7e4009ad5, type: 3}
@@ -913,7 +970,7 @@ GameObject:
   - component: {fileID: 5135156708547503418}
   m_Layer: 0
   m_Name: Prometheus
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1829,3 +1886,4 @@ SceneRoots:
   - {fileID: 1371667858}
   - {fileID: 261786959825509166}
   - {fileID: 25822461}
+  - {fileID: 1141733113}

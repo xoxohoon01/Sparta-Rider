@@ -377,19 +377,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - prefab: {fileID: 7565903715073382665, guid: 62e8f7c89692e1f4baf186e7c82cab19, type: 3}
+  - item: {fileID: 7565903715073382665, guid: 62e8f7c89692e1f4baf186e7c82cab19, type: 3}
     itemSO: {fileID: 11400000, guid: 85985ac461157ea46adf5c79691b98ed, type: 2}
     size: 20
-  - prefab: {fileID: 6552164357065408507, guid: 2e5e589199012ac46a5221aba21000b6, type: 3}
+  - item: {fileID: 6552164357065408507, guid: 2e5e589199012ac46a5221aba21000b6, type: 3}
     itemSO: {fileID: 11400000, guid: 5549f327981def840a97363fcf533fea, type: 2}
     size: 20
-  - prefab: {fileID: 2942548372646016969, guid: 155767d35ad571347aba989aeb6ef7ee, type: 3}
+  - item: {fileID: 2942548372646016969, guid: 155767d35ad571347aba989aeb6ef7ee, type: 3}
     itemSO: {fileID: 11400000, guid: 7ecb8fb7d3818f1479915661f576655a, type: 2}
     size: 20
-  - prefab: {fileID: 2808076677953365353, guid: c131cf55213265b4982daf798c52b50a, type: 3}
+  - item: {fileID: 2808076677953365353, guid: c131cf55213265b4982daf798c52b50a, type: 3}
     itemSO: {fileID: 11400000, guid: 5a85648926bf57e4484694d832b64c65, type: 2}
     size: 20
-  - prefab: {fileID: 7889633595426824729, guid: a7d0704baec20be478fef0291095f43f, type: 3}
+  - item: {fileID: 7889633595426824729, guid: a7d0704baec20be478fef0291095f43f, type: 3}
     itemSO: {fileID: 11400000, guid: c5a4b216f2bac3c49a637a3287f44bae, type: 2}
     size: 20
 --- !u!114 &115470766
@@ -405,7 +405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPool: {fileID: 115470765}
-  item: {fileID: 0}
 --- !u!1 &434915318
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,6 +974,7 @@ GameObject:
   - component: {fileID: 5135156708844135576}
   - component: {fileID: 1333375406}
   - component: {fileID: 5135156708844135577}
+  - component: {fileID: 5135156708844135578}
   m_Layer: 0
   m_Name: Prometheus
   m_TagString: Player
@@ -7022,6 +7022,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0651288, y: 1.0053232, z: 4.8675246}
   m_Center: {x: 0, y: 0.7245821, z: -0.1297648}
+--- !u!114 &5135156708844135578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642287923972309051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b43e4213144c884a9cb70ec67ba6656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  itemSO: {fileID: 0}
 --- !u!4 &5534550324032852405
 Transform:
   m_ObjectHideFlags: 0

@@ -10,19 +10,29 @@ public class ItemBox : MonoBehaviour
     public ParticleSystem particle;
     private WaitForSeconds waitForSeconds = new WaitForSeconds(5f);
 
+    private void Awake()
+    {
+        generator = GetComponent<ItemGenerator>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
-            particle.Stop();
-            col.enabled = false;
-            ren.enabled = false;
-            // GameManager에 ItemGenerator를 넣으면 코드 바꿀 예정!!!
-            generator.Generate();
+            Deactivate();
+            generator.Generate(other.gameObject);
+            StartCoroutine(CoActivation());
         }
     }
 
-    private IEnumerator CoItemBoxActivation()
+    private void Deactivate()
+    {
+        particle.Stop();
+        col.enabled = false;
+        ren.enabled = false;
+    }
+
+    private IEnumerator CoActivation()
     {
         yield return waitForSeconds;
         particle.Play();

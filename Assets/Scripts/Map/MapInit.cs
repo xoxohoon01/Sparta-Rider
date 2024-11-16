@@ -8,15 +8,17 @@ public class MapInit : MonoBehaviour
     [SerializeField] GameObject mapPrefab;
     [SerializeField] GameObject map;
 
-    private int mapSize = 20;
+    [SerializeField] private int mapSize = 20;
+    [SerializeField] private int mapScale = 300;
 
     private void Start()
     {
+        int pixelScale = mapScale / mapSize;
         for (int i = 0; i < mapSize; i++)
         {
             for (int j = 0; j < mapSize; j++)
             {
-                Instantiate(mapPrefab, new Vector3((mapSize/2 - j) * 15, -0.501f, (mapSize/2 - i) * 15), Quaternion.identity, map.transform);
+                Instantiate(mapPrefab, new Vector3((mapSize/2 - j) * pixelScale, -0.5001f, (mapSize/2 - i) * pixelScale), Quaternion.identity, map.transform);
             }
         }
     }

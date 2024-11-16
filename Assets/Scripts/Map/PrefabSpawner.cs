@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TrackSpawner : MonoBehaviour
+public class PrefabSpawner : MonoBehaviour
 {
     [SerializeField] GameObject map;
     private Camera mainCam;
     private GameObject prefab;
     private GameObject currentPrefab;  // 생성된 프리팹을 저장할 변수
 
-    private Stack<GameObject> placedPrefabs = new Stack<GameObject>();
-    [SerializeField] float nearDistance = 30f;
+    private Stack<GameObject> placedPrefab = new Stack<GameObject>();
 
     private void Awake()
     {
@@ -36,9 +35,11 @@ public class TrackSpawner : MonoBehaviour
         if (currentPrefab != null)
         {
             MovePrefabToMousePosition();  // 마우스 위치로 프리팹 이동
-        } else if (Input.GetMouseButtonDown(1))
+        }
+        else if (Input.GetMouseButtonDown(1))
         {
-            GameObject prefab = placedPrefabs.Pop();
+            // z = Ctrl + z
+            GameObject prefab = placedPrefab.Pop();
             Destroy(prefab);
         }
     }
@@ -53,34 +54,25 @@ public class TrackSpawner : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            Vector3 targetPosition = new Vector3(hit.point.x, 0f, hit.point.z);
+            Vector3 targetPosition;
 
-            foreach (GameObject prefab in placedPrefabs)
+            if (currentPrefab.layer == LayerMask.NameToLayer("Track"))
             {
-                // 기존 프리팹과의 거리
-                float distance = (currentPrefab.transform.position - prefab.transform.position).magnitude;
-                
-                if (distance <= nearDistance)
-                {
-                    // TODO : 자석처럼 옆에 붙이기
-                    
-                }
+                float colliderHeight = hit.collider.bounds.size.y;
+                targetPosition = hit.transform.position + colliderHeight * Vector3.up;
             }
-
-            float colliderHeight = hit.collider.bounds.size.y;
-            targetPosition = hit.transform.position + colliderHeight * Vector3.up;
+            else
+            {
+                targetPosition = new Vector3(hit.point.x, 0, hit.point.z);
+            }
 
             // 프리팹 목표 위치로 이동
             currentPrefab.transform.position = targetPosition;
 
             if (Input.GetMouseButtonDown(0))
             {
-                placedPrefabs.Push(currentPrefab);
+                placedPrefab.Push(currentPrefab);
                 currentPrefab = null;
-            }
-            else if (Input.GetMouseButtonDown(1))
-            {
-                Destroy(currentPrefab); // 프리팹 제거
             }
         }
     }

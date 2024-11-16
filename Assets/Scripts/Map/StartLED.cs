@@ -15,10 +15,10 @@ public class StartLED : MonoBehaviour
     
     void Start()
     {
-        StartCoroutine(ChangeLights());
+        StartCoroutine(CoLights());
     }
 
-    public IEnumerator ChangeLights()
+    public IEnumerator CoLights()
     {
         lightC.material = StartLEDRed;
         yield return wait;

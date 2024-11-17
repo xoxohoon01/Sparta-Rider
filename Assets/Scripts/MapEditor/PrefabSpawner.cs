@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PrefabSpawner : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class PrefabSpawner : MonoBehaviour
     // 버튼 클릭 시 호출되는 메소드
     public void OnButtonClick(string name)
     {
-        prefab = Resources.Load<GameObject>(name);  // 리소스에서 프리팹 로드
+        prefab = Resources.Load<GameObject>($"Prefabs/{name}");  // 리소스에서 프리팹 로드
         if (prefab != null)
         {
             // 프리팹 배치 중이었다면 제거
@@ -35,12 +35,6 @@ public class PrefabSpawner : MonoBehaviour
         if (currentPrefab != null)
         {
             MovePrefabToMousePosition();  // 마우스 위치로 프리팹 이동
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            // z = Ctrl + z
-            GameObject prefab = placedPrefab.Pop();
-            Destroy(prefab);
         }
     }
 
@@ -74,6 +68,29 @@ public class PrefabSpawner : MonoBehaviour
                 placedPrefab.Push(currentPrefab);
                 currentPrefab = null;
             }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                Destroy(currentPrefab);
+            }
+        }
+    }
+
+    public void OnRotate(InputAction.CallbackContext context)
+    {
+        if (currentPrefab != null && context.performed)
+        {
+            // Y축 기준으로 90도 회전
+            currentPrefab.transform.Rotate(0, 90, 0, Space.World);
+        }
+    }
+
+    public void OnUndo(InputAction.CallbackContext context)
+    {
+        // z = Ctrl + z
+        if (placedPrefab.Count > 0 && context.performed)
+        {
+            GameObject prefab = placedPrefab.Pop();
+            Destroy(prefab);
         }
     }
 }

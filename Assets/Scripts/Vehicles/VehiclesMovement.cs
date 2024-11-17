@@ -41,7 +41,7 @@ public class VehiclesMovement : MonoBehaviour
 
     private void OnBrake(InputValue value)
     {
-
+        GameManager.Instance.LoadScene(SceneType.StartScene);
     }
 
     private void Update()

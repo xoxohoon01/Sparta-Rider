@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8410463666442459816}
   - component: {fileID: -4180479327332058295}
   m_Layer: 8
-  m_Name: Track_line_Goal
+  m_Name: Track_Line_Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

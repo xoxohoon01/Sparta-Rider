@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using DG.Tweening;
+using DG.Tweening;
 
 public class UIMap : MonoBehaviour
 {
@@ -9,7 +9,14 @@ public class UIMap : MonoBehaviour
 
     public void OnMap()
     {
+        if (mapObject.transform.localPosition.x > -1470)
+        {
+            mapObject.transform.DOLocalMoveX(mapObject.transform.localPosition.x - 1460, 1);
+        }
+        else
+        {
+            mapObject.transform.DOLocalMoveX(0, 1);
+        }
         
-        //mapObject.transform.DOLocalMoveX
     }
 }

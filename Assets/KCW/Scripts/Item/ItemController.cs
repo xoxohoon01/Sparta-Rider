@@ -1,7 +1,7 @@
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class ItemControl : MonoBehaviour
+public class ItemController : MonoBehaviour
 {
     public GameObject item;
     public ItemSO itemSO;

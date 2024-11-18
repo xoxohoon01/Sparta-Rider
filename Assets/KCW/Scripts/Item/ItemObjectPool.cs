@@ -1,49 +1,50 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public class Pool
+{
+    public GameObject item;
+    public ItemSO itemSO;
+    public int size;
+}
+
 public class ItemObjectPool : MonoBehaviour
 {
-    [System.Serializable]
-    public class Pool
-    {
-        public ItemType type;
-        public GameObject prefab;
-        public int size;
-    }
-
-    // 리스트는 자동적으로 시리얼라이즈 되고 딕셔너리는 안됨
     public List<Pool> pools = new List<Pool>();
-    public Dictionary<ItemType, Queue<GameObject>> PoolDictionary;
+    public Dictionary<ItemType, Queue<Pool>> poolDictionary;
 
     private void Awake()
     {
-        PoolDictionary = new Dictionary<ItemType, Queue<GameObject>>();
+        poolDictionary = new Dictionary<ItemType, Queue<Pool>>();
 
         foreach (var pool in pools)
         {
-            Queue<GameObject> queue = new Queue<GameObject>();
+            Queue<Pool> queue = new Queue<Pool>();
             for (int i = 0; i < pool.size; i++)
             {
-                GameObject _obj = Instantiate(pool.prefab);
+                GameObject _obj = Instantiate(pool.item);
                 _obj.SetActive(false);
-                queue.Enqueue(_obj);
+                pool.item = _obj;
+                queue.Enqueue(pool);
             }
 
-            PoolDictionary.Add(pool.type, queue);
+            poolDictionary.Add(pool.itemSO.type, queue);
         }
     }
 
-    public GameObject SpawnFromPool(ItemType type)
+    public Pool SpawnFromPool(ItemType type)
     {
-        if (!PoolDictionary.ContainsKey(type))
+        if (!poolDictionary.ContainsKey(type))
         {
             return null;
         }
 
-        GameObject _obj = PoolDictionary[type].Dequeue();
-        PoolDictionary[type].Enqueue(_obj);
+        Pool _pool = poolDictionary[type].Dequeue();
+        poolDictionary[type].Enqueue(_pool);
 
-        return _obj;
+        return _pool;
     }
 }

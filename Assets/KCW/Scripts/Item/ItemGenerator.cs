@@ -28,7 +28,7 @@ public class ItemGenerator : MonoBehaviour
         generatorItemSo = _pool.itemSO;
 
         // Item을 얻은 객체(obj)에게 Item 반환하기
-        ItemController itemControl = obj.GetComponent<ItemController>();
-        itemControl.GetItemPool(_pool);
+        ItemController _itemControl = obj.GetComponent<ItemController>();
+        _itemControl.GetItemPool(_pool);
     }
 }

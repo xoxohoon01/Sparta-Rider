@@ -1,29 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class ItemGenerator : MonoBehaviour
 {
-    private ItemObjectPool objectPool;
-    public float spawnTime;
-    private float lastSpawnTime;
+    private WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
+    
+    // GameManager에 넣을 예정
+    public ItemObjectPool objectPool;
+    
+    // ItemControl이랑 같은지 확인용
+    public GameObject generatorItem;
+    public ItemSO generatorItemSo;
 
     private void Awake()
     {
         objectPool = GetComponent<ItemObjectPool>();
     }
 
-    void Update()
+    public void Generate(GameObject obj)
     {
-        lastSpawnTime += Time.deltaTime;
-        if (lastSpawnTime >= spawnTime)
-        {
-            lastSpawnTime = 0f;
+        ItemType _type = (ItemType)Random.Range(0, (int)ItemType.Count);
+        Pool _pool = objectPool.SpawnFromPool(_type);
 
-            ItemType _type = (ItemType)Random.Range(0, (int)ItemType.Count);
-            GameObject _obj = objectPool.SpawnFromPool(_type);
-            _obj.transform.position = transform.position;
-            _obj.SetActive(true);
-        }
+        generatorItem = _pool.item;
+        generatorItemSo = _pool.itemSO;
+
+        // Item을 얻은 객체(obj)에게 Item 반환하기
+        ItemController itemControl = obj.GetComponent<ItemController>();
+        itemControl.GetItemPool(_pool);
     }
 }

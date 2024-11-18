@@ -16,7 +16,7 @@
                 },
                 {
                     "name": "Accel",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "528e0112-749a-4bd0-aaec-1bdc7c391694",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -25,7 +25,7 @@
                 },
                 {
                     "name": "Brake",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "546be6c8-86fe-4e2b-8987-7a089a6da9cc",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -68,20 +68,42 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "6a53d429-c18d-4ec6-beb1-bf25213e090f",
+                    "name": "1D Axis",
+                    "id": "11f61b74-67d1-4bbf-a6a6-fc14e2b7a919",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accel",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "0a087022-f83f-471f-9fb8-a683428340f0",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "97ea7cfe-0757-435a-9dac-3424def74008",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Accel",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
                     "id": "a8cd833b-9d2c-4c30-9e78-72b17a777540",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

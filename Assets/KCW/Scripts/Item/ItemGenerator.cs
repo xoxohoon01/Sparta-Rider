@@ -21,8 +21,8 @@ public class ItemGenerator : MonoBehaviour
 
     public void Generate(GameObject obj)
     {
-        ItemType _type = (ItemType)Random.Range(0, (int)ItemType.Count);
-        Pool _pool = objectPool.SpawnFromPool(_type);
+        ItemName _name = (ItemName)Random.Range(0, (int)ItemName.Count);
+        Pool _pool = objectPool.SpawnFromPool(_name);
 
         generatorItem = _pool.item;
         generatorItemSo = _pool.itemSO;

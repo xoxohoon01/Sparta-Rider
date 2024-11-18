@@ -1,26 +1,25 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class CarAI : MonoBehaviour
 {
-    public Transform[] waypoints; // 트랙의 Waypoints
-    private int currentWaypointIndex = 0;
+    [FormerlySerializedAs("waypoints")] public Transform[] wayPoints;
+    private int wayPointIndex = 0;
     private NavMeshAgent agent;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = waypoints[currentWaypointIndex].position; // 첫 목적지 설정
+        agent.destination = wayPoints[wayPointIndex].position;
     }
 
     void Update()
     {
-        // 목적지에 도착했는지 확인
         if (!agent.pathPending && agent.remainingDistance < 5f)
         {
-            // 다음 Waypoint로 이동
-            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
-            agent.destination = waypoints[currentWaypointIndex].position;
+            wayPointIndex = (wayPointIndex + 1) % wayPoints.Length;
+            agent.destination = wayPoints[wayPointIndex].position;
         }
     }
 }

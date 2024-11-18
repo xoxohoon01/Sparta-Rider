@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PrefabSpawner : MonoBehaviour
@@ -18,9 +19,9 @@ public class PrefabSpawner : MonoBehaviour
     }
 
     // 버튼 클릭 시 호출되는 메소드
-    public void OnButtonClick(string name)
+    public void OnButtonClick()
     {
-        prefab = Resources.Load<GameObject>($"Prefabs/{name}");  // 리소스에서 프리팹 로드
+        prefab = Resources.Load<GameObject>($"Prefabs/{EventSystem.current.currentSelectedGameObject.name}");  // 리소스에서 프리팹 로드
         if (prefab != null)
         {
             // 프리팹 배치 중이었다면 제거
@@ -63,15 +64,24 @@ public class PrefabSpawner : MonoBehaviour
             // 프리팹 목표 위치로 이동
             currentPrefab.transform.position = targetPosition;
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                placedPrefab.Push(currentPrefab);
-                currentPrefab = null;
-            }
-            else if (Input.GetMouseButtonDown(1))
-            {
-                Destroy(currentPrefab);
-            }
+            
+        }
+    }
+
+    public void OnInstall(InputAction.CallbackContext context)
+    {
+        if (currentPrefab != null && context.performed)
+        {
+            placedPrefab.Push(currentPrefab);
+            currentPrefab = null;
+        }
+    }
+
+    public void OnCancel(InputAction.CallbackContext context)
+    {
+        if (currentPrefab != null && context.performed)
+        {
+            Destroy(gameObject);
         }
     }
 

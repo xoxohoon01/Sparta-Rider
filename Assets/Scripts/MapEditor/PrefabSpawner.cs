@@ -54,7 +54,7 @@ public class PrefabSpawner : MonoBehaviour
             if (currentPrefab.layer == LayerMask.NameToLayer("Track"))
             {
                 float colliderHeight = hit.collider.bounds.size.y;
-                targetPosition = hit.transform.position + colliderHeight * Vector3.up;
+                targetPosition = hit.transform.position + colliderHeight * new Vector3(0, 0.5001f, 0);
             }
             else
             {
@@ -81,7 +81,7 @@ public class PrefabSpawner : MonoBehaviour
     {
         if (currentPrefab != null && context.performed)
         {
-            Destroy(gameObject);
+            Destroy(currentPrefab);
         }
     }
 

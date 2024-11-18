@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StartLED : MonoBehaviour
 {
+    [SerializeField] Material StartLEDBlack;
     [SerializeField] Material StartLEDRed;
     [SerializeField] Material StartLEDGreen;
 
@@ -20,6 +21,9 @@ public class StartLED : MonoBehaviour
 
     public IEnumerator CoLights()
     {
+        lightA.material = StartLEDBlack;
+        lightB.material = StartLEDBlack;
+        lightC.material = StartLEDBlack;
         lightC.material = StartLEDRed;
         yield return wait;
         lightB.material = StartLEDRed;

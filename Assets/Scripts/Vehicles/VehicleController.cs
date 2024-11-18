@@ -54,7 +54,7 @@ public class VehicleController : MonoBehaviour
 
         // 현재 속도 계산 (전진: 양수, 후진: 음수)
         float currentSpeed = Vector3.Dot(rb.velocity, transform.forward);
-        Debug.Log(currentSpeed / maxSpeed);
+        //Debug.Log(currentSpeed / maxSpeed);
         // 조향 (속도가 일정 이상일 때만 작동)
         if (Mathf.Abs(currentSpeed) > 0.1f) // 절대값 속도로 움직임 확인
         {

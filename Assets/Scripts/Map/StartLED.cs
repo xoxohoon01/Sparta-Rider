@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StartLED : MonoBehaviour
 {
+    [SerializeField] Material StartLEDBlack;
     [SerializeField] Material StartLEDRed;
     [SerializeField] Material StartLEDGreen;
 
@@ -12,22 +13,35 @@ public class StartLED : MonoBehaviour
     [SerializeField] MeshRenderer lightC;
 
     WaitForSeconds wait = new WaitForSeconds(1);
-    
-    void Start()
+    private VehicleController player;
+    private float original;
+
+    private void Awake()
     {
-        StartCoroutine(ChangeLights());
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<VehicleController>();
+        original = player.maxSpeed;
     }
 
-    IEnumerator ChangeLights()
+    void Start()
     {
-        lightA.material = StartLEDRed;
+        StartCoroutine(CoLights());
+    }
+
+    public IEnumerator CoLights()
+    {
+        player.maxSpeed = 0;
+        lightA.material = StartLEDBlack;
+        lightB.material = StartLEDBlack;
+        lightC.material = StartLEDBlack;
+        lightC.material = StartLEDRed;
         yield return wait;
         lightB.material = StartLEDRed;
         yield return wait;
-        lightC.material = StartLEDRed;
+        lightA.material = StartLEDRed;
         yield return wait;
         lightA.material = StartLEDGreen; 
         lightB.material = StartLEDGreen;
         lightC.material = StartLEDGreen;
+        player.maxSpeed = original;
     }
 }

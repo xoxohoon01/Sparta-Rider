@@ -10,41 +10,41 @@ public class VehiclesMovement : MonoBehaviour
     public WheelCollider BackLeftWheel;
     public WheelCollider BackRightWheel;
 
-    private float acceleration = 100f;
+    private float acceleration = 500f;
     private float nowAcceleration = 0f;
+    private float maxSteeringAngle = 25f;
+    private float steeringSpeed = 50f;
+    private float brakeForce = 300f;
 
-    private void OnAcecl(InputValue value)
+    private bool isAccel;
+
+    public void OnAccel(InputValue value)
     {
-        if (value.isPressed)
-        {
-            FrontLeftWheel.motorTorque = acceleration;
-            FrontLeftWheel.brakeTorque = 0;
-            FrontRightWheel.motorTorque = acceleration;
-            FrontRightWheel.brakeTorque = 0;
-            BackLeftWheel.motorTorque = acceleration;
-            BackLeftWheel.brakeTorque = 0;
-            BackRightWheel.motorTorque = acceleration;
-            BackRightWheel.brakeTorque = 0;
-        }
-        else
-        {
-            FrontLeftWheel.motorTorque = 0;
-            FrontLeftWheel.brakeTorque = 0;
-            FrontRightWheel.motorTorque = 0;
-            FrontRightWheel.brakeTorque = 0;
-            BackLeftWheel.motorTorque = 0;
-            BackLeftWheel.brakeTorque = 0;
-            BackRightWheel.motorTorque = 0;
-            BackRightWheel.brakeTorque = 0;
-        }
+        FrontLeftWheel.motorTorque = acceleration * value.Get<float>();
+        FrontLeftWheel.brakeTorque = 0;
+        FrontRightWheel.motorTorque = acceleration * value.Get<float>();
+        FrontRightWheel.brakeTorque = 0;
+        BackLeftWheel.motorTorque = acceleration * value.Get<float>();
+        BackLeftWheel.brakeTorque = 0;
+        BackRightWheel.motorTorque = acceleration * value.Get<float>();
+        BackRightWheel.brakeTorque = 0;
     }
 
-    private void OnBrake(InputValue value)
+    public void OnSteering(InputValue value)
     {
-
+        float steeringAxis = value.Get<float>();
+        var steeringAngle = steeringAxis * maxSteeringAngle;
+        FrontLeftWheel.steerAngle = Mathf.Lerp(FrontLeftWheel.steerAngle, steeringAngle, steeringSpeed);
+        FrontRightWheel.steerAngle = Mathf.Lerp(FrontRightWheel.steerAngle, steeringAngle, steeringSpeed);
     }
 
-    private void Update()
+    public void OnBrake(InputValue value)
     {
+        FrontLeftWheel.brakeTorque = brakeForce;
+        FrontRightWheel.brakeTorque = brakeForce;
+        BackLeftWheel.brakeTorque = brakeForce;
+        BackRightWheel.brakeTorque = brakeForce;
     }
+
+
 }

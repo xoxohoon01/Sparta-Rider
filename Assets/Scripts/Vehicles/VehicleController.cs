@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class VehicleController : MonoBehaviour
 {
+
+    
+
     private Rigidbody rb;  // 리지드바디
 
     public WheelCollider frontLeftWheelCollider;  // 바퀴 콜라이더
@@ -19,6 +22,9 @@ public class VehicleController : MonoBehaviour
 
     public float motorTorque = 200f;      // 엔진 힘
     public float maxSteerAngle = 30f;     // 최대 조향 각도
+
+    public float acceleration = 200f;            // 가속도
+    public float maxSpeed = 500f;                // 최대속도
 
     private float steerMultiplies = 1f;   // 스티어링 계수
 
@@ -36,15 +42,15 @@ public class VehicleController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical"); // 전진/후진
         float horizontal = Input.GetAxis("Horizontal"); // 좌/우 회전
 
-        frontLeftWheelCollider.steerAngle = rb.velocity.magnitude > 30? maxSteerAngle * 2 * horizontal : maxSteerAngle * 1 * horizontal;
+        frontLeftWheelCollider.steerAngle = rb.velocity.magnitude > 30 ? maxSteerAngle * 2 * horizontal : maxSteerAngle * 1 * horizontal;
         frontRightWheelCollider.steerAngle = rb.velocity.magnitude > 30 ? maxSteerAngle * 2 * horizontal : maxSteerAngle * 1 * horizontal;
         //frontLeftWheelCollider.steerAngle = maxSteerAngle * steerMultiplies * horizontal;
         //frontRightWheelCollider.steerAngle = maxSteerAngle * steerMultiplies * horizontal;
 
-        frontLeftWheelCollider.motorTorque = motorTorque * vertical;
-        frontRightWheelCollider.motorTorque = motorTorque * vertical;
-        rearLeftWheelCollider.motorTorque = motorTorque * vertical;
-        rearRightWheelCollider.motorTorque = motorTorque * vertical;
+        frontLeftWheelCollider.motorTorque = acceleration * vertical;
+        frontRightWheelCollider.motorTorque = acceleration * vertical;
+        rearLeftWheelCollider.motorTorque = acceleration * vertical;
+        rearRightWheelCollider.motorTorque = acceleration * vertical;
     }
 
     void Update()

@@ -14,36 +14,39 @@ public class Pool
 public class ItemObjectPool : MonoBehaviour
 {
     public List<Pool> pools = new List<Pool>();
-    public Dictionary<ItemType, Queue<Pool>> poolDictionary;
+    private Dictionary<ItemName, Queue<Pool>> poolDictionary;
 
     private void Awake()
     {
-        poolDictionary = new Dictionary<ItemType, Queue<Pool>>();
+        poolDictionary = new Dictionary<ItemName, Queue<Pool>>();
 
         foreach (var pool in pools)
         {
             Queue<Pool> queue = new Queue<Pool>();
             for (int i = 0; i < pool.size; i++)
             {
+                Pool _pool = new Pool();
                 GameObject _obj = Instantiate(pool.item);
                 _obj.SetActive(false);
-                pool.item = _obj;
-                queue.Enqueue(pool);
+                _obj.name = _obj.name.Replace("(Clone)", i.ToString());
+                _pool.item = _obj;
+                _pool.itemSO = pool.itemSO;
+                queue.Enqueue(_pool);
             }
 
-            poolDictionary.Add(pool.itemSO.type, queue);
+            poolDictionary.Add(pool.itemSO.name, queue);
         }
     }
 
-    public Pool SpawnFromPool(ItemType type)
+    public Pool SpawnFromPool(ItemName name)
     {
-        if (!poolDictionary.ContainsKey(type))
+        if (!poolDictionary.ContainsKey(name))
         {
             return null;
         }
 
-        Pool _pool = poolDictionary[type].Dequeue();
-        poolDictionary[type].Enqueue(_pool);
+        Pool _pool = poolDictionary[name].Dequeue();
+        poolDictionary[name].Enqueue(_pool);
 
         return _pool;
     }

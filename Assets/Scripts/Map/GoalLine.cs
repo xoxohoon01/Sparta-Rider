@@ -9,15 +9,7 @@ public class GoalLine : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Transform current = other.transform;
-
-            // 최상위 부모를 찾을 때까지 반복
-            while (current.parent != null)
-            {
-                current = current.parent;
-            }
-
-            Debug.Log(current.name);
+            MidPointManager.Instance.CheckFinishLine();
         }
     }
 }

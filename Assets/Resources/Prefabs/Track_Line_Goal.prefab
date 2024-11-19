@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 5127182048290922587}
   m_Layer: 8
   m_Name: GoalLine
-  m_TagString: Untagged
+  m_TagString: DefaultSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

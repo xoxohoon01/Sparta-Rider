@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 5859808831375134119}
   - component: {fileID: 298937317776822501}
   m_Layer: 8
-  m_Name: Track_Line_Goal
+  m_Name: Track_Line_MidPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,10 +223,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7912704883081492714}
   - component: {fileID: 7746814072542333328}
-  - component: {fileID: 5127182048290922587}
+  - component: {fileID: 3490214422064683341}
   m_Layer: 8
-  m_Name: GoalLine
-  m_TagString: Untagged
+  m_Name: MidPoint
+  m_TagString: MidPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,7 +267,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 15, y: 4, z: 1}
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &5127182048290922587
+--- !u!114 &3490214422064683341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4409835864316978927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e64c40727fe499468eba0201e4c2927, type: 3}
+  m_Script: {fileID: 11500000, guid: 811d1bbe689d4b141b2db5fc98be37d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7222486909671648503

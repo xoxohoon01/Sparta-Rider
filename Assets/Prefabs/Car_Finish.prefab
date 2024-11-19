@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2864034639174585354}
   - component: {fileID: 7023510470656353957}
   - component: {fileID: 5194816130806689451}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RearLeftWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3293599479159553714}
   - component: {fileID: 9196921915078497321}
   - component: {fileID: 2002236515045597349}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 5359477545671437761}
   - component: {fileID: 6780990949385716593}
   - component: {fileID: 1507135462825774926}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 725380350685782154}
   - component: {fileID: 2514652719168289854}
   - component: {fileID: 2981907958266171435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RearRightWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,9 +354,9 @@ GameObject:
   - component: {fileID: 8476685684393904361}
   - component: {fileID: 4736248533725716629}
   - component: {fileID: 8108011170192988298}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car_Finish
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 3831326577495030179}
   - component: {fileID: 6750849728959917116}
   - component: {fileID: 8334225573739849335}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FrontRightWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 4099109433985513278}
   - component: {fileID: 5474107761696535518}
   - component: {fileID: 4169981254741421721}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FrontLeftWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

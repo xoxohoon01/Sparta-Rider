@@ -15,6 +15,7 @@ public enum SceneType
 public class GameManager : MonoSingleton<GameManager>
 {
     public int mapNumber;
+    public int carNumber;
     
     public void LoadScene(SceneType sceneType)
     {

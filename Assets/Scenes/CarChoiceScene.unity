@@ -618,19 +618,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 378434955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 654339115}
-        m_TargetAssemblyTypeName: UIMap, Assembly-CSharp
-        m_MethodName: OnMapRight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &378434955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,19 +738,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 392713428}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 654339115}
-        m_TargetAssemblyTypeName: UIMap, Assembly-CSharp
-        m_MethodName: OnMapLeft
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &392713428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -967,10 +943,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 654339113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abccf50d1de6f4e8281817fb3b3cf96e, type: 3}
+  m_Script: {fileID: 11500000, guid: 90cd586605ac24329887d3ae0e2e82d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapObject: {fileID: 0}
 --- !u!1 &664624938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,6 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapNumber: 0
+  carNumber: 0
 --- !u!4 &1011334833
 Transform:
   m_ObjectHideFlags: 0
@@ -2402,7 +2378,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1597424411}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 654339115}
+        m_TargetAssemblyTypeName: CarChoice, Assembly-CSharp
+        m_MethodName: OnChoiceCar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1597424411
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Vehicle", menuName = "NewVehicle")]
 public class VehicleStatus : ScriptableObject
 {
+    public float currentSpeed;      // 현재 속도
     public float acceleration = 50f; // 가속력
     public float maxSpeed = 20f; // 최대 속도
     public float steering = 100f; // 조향 민감도

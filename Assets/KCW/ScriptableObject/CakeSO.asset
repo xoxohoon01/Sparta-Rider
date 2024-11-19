@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ac2fab40403d342a10d4284b27bc00, type: 3}
   m_Name: CakeSO
   m_EditorClassIdentifier: 
-  name: 3
+  itemName: 3
   durationTime: 5
   speed: 0

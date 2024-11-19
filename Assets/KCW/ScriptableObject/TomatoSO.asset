@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ac2fab40403d342a10d4284b27bc00, type: 3}
   m_Name: TomatoSO
   m_EditorClassIdentifier: 
-  name: 1
+  itemName: 1
   durationTime: 3
   speed: 0

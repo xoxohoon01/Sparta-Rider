@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 6825629362485484199}
   - component: {fileID: 8030783549390788762}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TomatoEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2548446355070881077
 RectTransform:
   m_ObjectHideFlags: 0

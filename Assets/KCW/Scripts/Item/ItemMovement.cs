@@ -13,7 +13,6 @@ public class ItemMovement : MonoBehaviour
     private bool isBanana;
 
     private GameObject collisionCar;
-    public GameObject tomatoCanvas;
 
     private void Awake()
     {
@@ -63,10 +62,9 @@ public class ItemMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.LogAssertion("Item Player Collision");
             disableItem();
             collisionCar = collision.gameObject;
-            switch (itemSO.name)
+            switch (itemSO.itemName)
             {
                 case ItemName.Banana: CollideBanana(); break;
                 case ItemName.Tomato: CollideTomato(); break;
@@ -94,8 +92,9 @@ public class ItemMovement : MonoBehaviour
 
     private void CollideTomato()
     {
-        tomatoCanvas.SetActive(true);
-        StartCoroutine(CoCollideTomato(tomatoCanvas));
+        GameObject _effect = ItemManager.Instance.tomatoEffect;
+        _effect.SetActive(true);
+        StartCoroutine(CoCollideTomato(_effect));
     }
 
     private IEnumerator CoCollideTomato(GameObject image)

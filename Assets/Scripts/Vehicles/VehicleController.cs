@@ -21,12 +21,12 @@ public class VehicleController : MonoBehaviour
     public Transform rearRightWheelMesh;
 
     public float motorTorque = 200f;      // 엔진 힘
-    public float maxSteerAngle = 30f;     // 최대 조향 각도
+    public float steerForce = 50f;     // 최대 조향 각도
+    private float steerMultiplies = 1f;   // 스티어링 계수
 
     public float acceleration = 200f;            // 가속도
     public float maxSpeed = 500f;                // 최대속도
 
-    private float steerMultiplies = 1f;   // 스티어링 계수
 
     [SerializeField] private float driftFriction = 0.5f;   // 드리프트시 마찰
     [SerializeField] private float normalFriction = 1.0f;  // 드리프트 전 마찰
@@ -42,8 +42,8 @@ public class VehicleController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical"); // 전진/후진
         float horizontal = Input.GetAxis("Horizontal"); // 좌/우 회전
 
-        frontLeftWheelCollider.steerAngle = rb.velocity.magnitude > 30 ? maxSteerAngle * 2 * horizontal : maxSteerAngle * 1 * horizontal;
-        frontRightWheelCollider.steerAngle = rb.velocity.magnitude > 30 ? maxSteerAngle * 2 * horizontal : maxSteerAngle * 1 * horizontal;
+        frontLeftWheelCollider.steerAngle = steerForce * steerMultiplies * horizontal;
+        frontRightWheelCollider.steerAngle = steerForce * steerMultiplies * horizontal;
         //frontLeftWheelCollider.steerAngle = maxSteerAngle * steerMultiplies * horizontal;
         //frontRightWheelCollider.steerAngle = maxSteerAngle * steerMultiplies * horizontal;
 
@@ -73,6 +73,9 @@ public class VehicleController : MonoBehaviour
         WheelFrictionCurve sidewaysFriction = frontLeftWheelCollider.sidewaysFriction;
 
         float targetFriction = isDrifting ? driftFriction : normalFriction;
+        rearLeftWheelCollider.brakeTorque = isDrifting ? 100f : 0;
+        rearRightWheelCollider.brakeTorque = isDrifting ? 100f : 0;
+        steerMultiplies = isDrifting ? 1.5f : 1.0f;
 
         forwardFriction.stiffness = targetFriction;
         sidewaysFriction.stiffness = targetFriction;
@@ -86,6 +89,8 @@ public class VehicleController : MonoBehaviour
         rearLeftWheelCollider.sidewaysFriction = sidewaysFriction;
         rearRightWheelCollider.forwardFriction = forwardFriction;
         rearRightWheelCollider.sidewaysFriction = sidewaysFriction;
+
+        
     }
 
 }

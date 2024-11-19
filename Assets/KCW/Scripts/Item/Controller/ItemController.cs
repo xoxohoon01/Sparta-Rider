@@ -50,7 +50,7 @@ public class ItemController : MonoBehaviour
             {
                 // 코루틴에서 itemSO 사용
                 StartCoroutine(CoBooster(vehicleController.acceleration));
-                vehicleController.acceleration *= 1.5f;
+                vehicleController.acceleration *= 2f;
             }
             else
             {

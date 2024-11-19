@@ -821,6 +821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftTireSmoke_PS
       objectReference: {fileID: 0}
+    - target: {fileID: 4121091811543088291, guid: ddf4ea2625767fd4bb4153e7e4009ad5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4121091811543137509, guid: ddf4ea2625767fd4bb4153e7e4009ad5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2050,6 +2054,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightTireSmoke_PS
       objectReference: {fileID: 0}
+    - target: {fileID: 4121091811543088291, guid: ddf4ea2625767fd4bb4153e7e4009ad5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4121091811543137509, guid: ddf4ea2625767fd4bb4153e7e4009ad5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2808,6 +2816,7 @@ GameObject:
   - component: {fileID: 1782723293}
   - component: {fileID: 1782723292}
   - component: {fileID: 1782723291}
+  - component: {fileID: 1782723294}
   m_Layer: 0
   m_Name: Prometheus
   m_TagString: Untagged
@@ -2908,6 +2917,18 @@ Transform:
   - {fileID: 1941002168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 221.976, z: 0}
+--- !u!114 &1782723294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782723288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5daf6612804043359451447e3b710d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1854659191
 GameObject:
   m_ObjectHideFlags: 0

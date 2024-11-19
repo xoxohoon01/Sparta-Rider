@@ -7,22 +7,14 @@ public class ItemGenerator : MonoBehaviour
 {
     private WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
     
-    // GameManager에 넣을 예정
-    public ItemObjectPool objectPool;
-    
     // ItemControl이랑 같은지 확인용
     public GameObject generatorItem;
     public ItemSO generatorItemSo;
 
-    private void Awake()
-    {
-        objectPool = GetComponent<ItemObjectPool>();
-    }
-
     public void Generate(GameObject obj)
     {
         ItemName _name = (ItemName)Random.Range(0, (int)ItemName.Count);
-        Pool _pool = objectPool.SpawnFromPool(_name);
+        Pool _pool = ItemManager.Instance.itemObjectPool.SpawnFromPool(_name);
 
         generatorItem = _pool.item;
         generatorItemSo = _pool.itemSO;

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ac2fab40403d342a10d4284b27bc00, type: 3}
   m_Name: BananaSO
   m_EditorClassIdentifier: 
-  type: 0
-  durationTime: 0
+  name: 0
+  durationTime: 2
+  speed: 0

@@ -1,4 +1,4 @@
-public enum ItemType
+public enum ItemName
 {
     Banana, // 미끄러짐
     Tomato, // 화면 빨개짐

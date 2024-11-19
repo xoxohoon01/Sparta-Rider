@@ -9,7 +9,10 @@ public enum SceneType
     MapChoiceScene,
     CarChoiceScene,
     LevelScene,
-    MainScene
+    MainScene,
+    Map1Scene,
+    Map2Scene,
+    Map3Scene
 }
 
 public class GameManager : MonoSingleton<GameManager>
@@ -27,4 +30,7 @@ public class GameManager : MonoSingleton<GameManager>
     public void LoadCarChoiceScene() => LoadScene(SceneType.CarChoiceScene);
     public void LoadLevelScene() => LoadScene(SceneType.LevelScene);
     public void LoadMainScene() => LoadScene(SceneType.MainScene);
+    public void LoadMap1Scene() => LoadScene(SceneType.Map1Scene);
+    public void LoadMap2Scene() => LoadScene(SceneType.Map2Scene);
+    public void LoadMap3Scene() => LoadScene(SceneType.Map3Scene);
 }

@@ -1,103 +1,96 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class VehicleController : MonoBehaviour
 {
-    public float acceleration = 50f; // 가속력
-    public float maxSpeed = 20f; // 최대 속도
-    public float steering = 100f; // 조향 민감도
-    public float driftForce = 15f; // 드리프트 힘
-    public float driftTurnMultiplier = 1.5f; // 드리프트 중 조향 민감도 증가
-    public float deceleration = 10f; // 자연 감속력
 
-    private Rigidbody rb;
-    private bool isDrifting = false;
+    
 
-    void Start()
+    private Rigidbody rb;  // 리지드바디
+
+    public WheelCollider frontLeftWheelCollider;  // 바퀴 콜라이더
+    public WheelCollider frontRightWheelCollider;
+    public WheelCollider rearLeftWheelCollider;
+    public WheelCollider rearRightWheelCollider;
+
+    public Transform frontLeftWheelMesh;  // 바퀴 Mesh
+    public Transform frontRightWheelMesh;
+    public Transform rearLeftWheelMesh;
+    public Transform rearRightWheelMesh;
+
+    public float motorTorque = 200f;      // 엔진 힘
+    public float steerForce = 50f;     // 최대 조향 각도
+    private float steerMultiplies = 1f;   // 스티어링 계수
+
+    public float acceleration = 200f;            // 가속도
+    public float maxSpeed = 500f;                // 최대속도
+
+
+    [SerializeField] private float driftFriction = 0.5f;   // 드리프트시 마찰
+    [SerializeField] private float normalFriction = 1.0f;  // 드리프트 전 마찰
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        HandleDrift();
-    }
-
     void FixedUpdate()
     {
-        HandleMovement();
+        // 입력 받기
+        float vertical = Input.GetAxis("Vertical"); // 전진/후진
+        float horizontal = Input.GetAxis("Horizontal"); // 좌/우 회전
+
+        frontLeftWheelCollider.steerAngle = steerForce * steerMultiplies * horizontal;
+        frontRightWheelCollider.steerAngle = steerForce * steerMultiplies * horizontal;
+        //frontLeftWheelCollider.steerAngle = maxSteerAngle * steerMultiplies * horizontal;
+        //frontRightWheelCollider.steerAngle = maxSteerAngle * steerMultiplies * horizontal;
+
+        frontLeftWheelCollider.motorTorque = acceleration * vertical;
+        frontRightWheelCollider.motorTorque = acceleration * vertical;
+        rearLeftWheelCollider.motorTorque = acceleration * vertical;
+        rearRightWheelCollider.motorTorque = acceleration * vertical;
     }
 
-    void HandleMovement()
+    void Update()
     {
-        // 사용자 입력
-        float moveInput = Input.GetAxis("Vertical"); // 전진/후진 (W/S 또는 ↑/↓)
-        float turnInput = Input.GetAxis("Horizontal"); // 좌우 조향 (A/D 또는 ←/→)
+        Vector3 pos;
+        Quaternion quat;
+        frontLeftWheelCollider.GetWorldPose(out pos, out quat);
+        frontRightWheelCollider.GetWorldPose(out pos, out quat);
 
-        // 가속 및 감속
-        if (moveInput != 0)
-        {
-            rb.AddForce(transform.forward * moveInput * acceleration, ForceMode.Acceleration);
-        }
-        else
-        {
-            // 자연 감속
-            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, deceleration * Time.fixedDeltaTime);
-        }
-
-        // 속도 제한
-        if (rb.velocity.magnitude > maxSpeed)
-        {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
-        }
-
-        // 현재 속도 계산 (전진: 양수, 후진: 음수)
-        float currentSpeed = Vector3.Dot(rb.velocity, transform.forward);
-        //Debug.Log(currentSpeed / maxSpeed);
-        // 조향 (속도가 일정 이상일 때만 작동)
-        if (Mathf.Abs(currentSpeed) > 0.1f) // 절대값 속도로 움직임 확인
-        {
-            float steerAmount = turnInput * steering * (currentSpeed / maxSpeed) * Time.fixedDeltaTime;
-
-            if (isDrifting)
-            {
-                steerAmount *= driftTurnMultiplier; // 드리프트 중엔 더 민감하게 조향
-            }
-
-            transform.Rotate(Vector3.up, steerAmount);
-        }
-
-        // 시각적 회전 (속도에 따라 바퀴 회전)
-        foreach (Transform child in transform)
-        {
-            if (child.name.Contains("Wheel")) // 바퀴 이름에 따라 시각적으로 회전
-            {
-                child.Rotate(Vector3.right * Mathf.Abs(currentSpeed) * Time.fixedDeltaTime * 10f);
-            }
-        }
+        // 바퀴 Mesh 회전 및 위치 업데이트
+        frontLeftWheelMesh.rotation = quat;
+        frontRightWheelMesh.rotation = quat;
     }
 
-
-    void HandleDrift()
+    void OnBrake(InputValue value)
     {
-        // 드리프트 시작
-        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.magnitude > 5f)
-        {
-            isDrifting = true;
-        }
+        bool isDrifting = value.isPressed;
 
-        // 드리프트 중 물리 효과 적용
-        if (isDrifting)
-        {
-            Vector3 driftDirection = transform.right * Input.GetAxis("Horizontal") * driftForce;
-            //rb.AddForce(driftDirection, ForceMode.Acceleration);
+        WheelFrictionCurve forwardFriction = frontLeftWheelCollider.forwardFriction;
+        WheelFrictionCurve sidewaysFriction = frontLeftWheelCollider.sidewaysFriction;
 
-            // 드리프트 종료
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                isDrifting = false;
-            }
-        }
+        float targetFriction = isDrifting ? driftFriction : normalFriction;
+        rearLeftWheelCollider.brakeTorque = isDrifting ? 100f : 0;
+        rearRightWheelCollider.brakeTorque = isDrifting ? 100f : 0;
+        steerMultiplies = isDrifting ? 1.5f : 1.0f;
+
+        forwardFriction.stiffness = targetFriction;
+        sidewaysFriction.stiffness = targetFriction;
+
+        // 적용
+        frontLeftWheelCollider.forwardFriction = forwardFriction;
+        frontLeftWheelCollider.sidewaysFriction = sidewaysFriction;
+        frontRightWheelCollider.forwardFriction = forwardFriction;
+        frontRightWheelCollider.sidewaysFriction = sidewaysFriction;
+        rearLeftWheelCollider.forwardFriction = forwardFriction;
+        rearLeftWheelCollider.sidewaysFriction = sidewaysFriction;
+        rearRightWheelCollider.forwardFriction = forwardFriction;
+        rearRightWheelCollider.sidewaysFriction = sidewaysFriction;
+
+        
     }
+
 }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapChoiceScene.unity
     guid: 179b34c8edd1c45388fe0f15011f4320
+  - enabled: 1
+    path: Assets/Scenes/CarChoiceScene.unity
+    guid: 89e838a3274434328a5b485f27dcae64
   m_configObjects: {}

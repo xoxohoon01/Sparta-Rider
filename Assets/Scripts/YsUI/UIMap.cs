@@ -6,7 +6,7 @@ using DG.Tweening;
 public class UIMap : MonoBehaviour
 {
     [SerializeField] private GameObject mapObject;
-    private float time;
+    private float time = 1;
 
     private void Update()
     {

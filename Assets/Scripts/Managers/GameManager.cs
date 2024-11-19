@@ -26,9 +26,4 @@ public class GameManager : MonoSingleton<GameManager>
     public void LoadCarChoiceScene() => LoadScene(SceneType.CarChoiceScene);
     public void LoadLevelScene() => LoadScene(SceneType.LevelScene);
     public void LoadMainScene() => LoadScene(SceneType.MainScene);
-
-    public void OnMapNumber(int number)
-    {
-        mapNumber = number;
-    }
 }

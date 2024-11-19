@@ -1,8 +1,6 @@
-using Palmmedia.ReportGenerator.Core;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemMovement : MonoBehaviour
 {
@@ -15,7 +13,7 @@ public class ItemMovement : MonoBehaviour
     private bool isBanana;
 
     private GameObject collisionCar;
-    
+
     private void Awake()
     {
         ren = GetComponent<Renderer>();
@@ -64,10 +62,9 @@ public class ItemMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.LogAssertion("Item Player Collision");
             disableItem();
             collisionCar = collision.gameObject;
-            switch (itemSO.name)
+            switch (itemSO.itemName)
             {
                 case ItemName.Banana: CollideBanana(); break;
                 case ItemName.Tomato: CollideTomato(); break;
@@ -95,16 +92,16 @@ public class ItemMovement : MonoBehaviour
 
     private void CollideTomato()
     {
-        Canvas _canvas = gameObject.GetComponentInChildren<Canvas>();
-        _canvas.gameObject.SetActive(true);
-        StartCoroutine(CoCollideTomato(_canvas.gameObject));
+        GameObject _effect = ItemManager.Instance.tomatoEffect;
+        _effect.SetActive(true);
+        StartCoroutine(CoCollideTomato(_effect));
     }
 
-    private IEnumerator CoCollideTomato(GameObject canvas)
+    private IEnumerator CoCollideTomato(GameObject image)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
         enableItem();
-        canvas.gameObject.SetActive(false);
+        image.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 }

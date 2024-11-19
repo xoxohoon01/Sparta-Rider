@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemSO", menuName = "Item/ItemSO")]
 public class ItemSO : ScriptableObject
 {
-    public ItemName name;
+    public ItemName itemName;
     public float durationTime; // 아이템 효과 지속시간
     public float speed;
 }

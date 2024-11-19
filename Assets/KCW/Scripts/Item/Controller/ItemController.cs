@@ -46,7 +46,7 @@ public class ItemController : MonoBehaviour
     {
         if (item)
         {
-            if (itemSO.name == ItemName.Coffee)
+            if (itemSO.itemName == ItemName.Coffee)
             {
                 // 코루틴에서 itemSO 사용
                 StartCoroutine(CoBooster(vehicleController.acceleration));

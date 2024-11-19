@@ -10,7 +10,7 @@ public class VehiclesMovement : MonoBehaviour
     public WheelCollider BackLeftWheel;
     public WheelCollider BackRightWheel;
 
-    private float acceleration = 500f;
+    private float acceleration = 100f;
     private float nowAcceleration = 0f;
     private float maxSteeringAngle = 25f;
     private float steeringSpeed = 50f;
@@ -20,6 +20,7 @@ public class VehiclesMovement : MonoBehaviour
 
     public void OnAccel(InputValue value)
     {
+        Debug.Log("찍");
         FrontLeftWheel.motorTorque = acceleration * value.Get<float>();
         FrontLeftWheel.brakeTorque = 0;
         FrontRightWheel.motorTorque = acceleration * value.Get<float>();

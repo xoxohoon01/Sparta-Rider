@@ -6,17 +6,44 @@ using DG.Tweening;
 public class UIMap : MonoBehaviour
 {
     [SerializeField] private GameObject mapObject;
+    private float time;
 
-    public void OnMap()
+    private void Update()
     {
-        if (mapObject.transform.localPosition.x > -1470)
+        time += Time.deltaTime;
+    }
+
+    public void OnMapRight()
+    {
+        if (mapObject.transform.localPosition.x > -1470 && time >= 1)
         {
             mapObject.transform.DOLocalMoveX(mapObject.transform.localPosition.x - 1460, 1);
+            time = 0;
         }
         else
         {
-            mapObject.transform.DOLocalMoveX(0, 1);
+            if (time >= 1)
+            {
+                mapObject.transform.DOLocalMoveX(0, 1);
+                time = 0;
+            }
         }
-        
+    }
+
+    public void OnMapLeft()
+    {
+        if (mapObject.transform.localPosition.x < -10 && time >= 1)
+        {
+            mapObject.transform.DOLocalMoveX(mapObject.transform.localPosition.x + 1460, 1);
+            time = 0;
+        }
+        else
+        {
+            if (time >= 1)
+            {
+                mapObject.transform.DOLocalMoveX(-2920, 1);
+                time = 0;
+            }
+        }
     }
 }

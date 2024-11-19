@@ -7,22 +7,28 @@ public enum SceneType
 {
     StartScene,
     MapChoiceScene,
-    CarScene,
+    CarChoiceScene,
     LevelScene,
     MainScene
 }
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public int mapNumber;
+    
     public void LoadScene(SceneType sceneType)
     {
         SceneManager.LoadScene($"{sceneType.ToString()}");
     }
-
-    // Button 전용 메서드
+    
     public void LoadStartScene() => LoadScene(SceneType.StartScene);
     public void LoadMapChoiceScene() => LoadScene(SceneType.MapChoiceScene);
-    public void LoadCarScene() => LoadScene(SceneType.CarScene);
+    public void LoadCarChoiceScene() => LoadScene(SceneType.CarChoiceScene);
     public void LoadLevelScene() => LoadScene(SceneType.LevelScene);
     public void LoadMainScene() => LoadScene(SceneType.MainScene);
+
+    public void OnMapNumber(int number)
+    {
+        mapNumber = number;
+    }
 }

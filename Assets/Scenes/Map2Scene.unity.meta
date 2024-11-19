@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/MapChoiceScene.unity.meta
+guid: 3b6e02904e34143fbb277323ec6f5e35
+========
 guid: 3f34da4ea7bbc0446bc747df3fa2c313
+>>>>>>>> dev:Assets/Scenes/Map2Scene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

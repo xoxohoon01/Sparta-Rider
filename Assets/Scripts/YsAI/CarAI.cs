@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 public class CarAI : MonoBehaviour
 {
-    [FormerlySerializedAs("waypoints")] public Transform[] wayPoints;
+    public Transform[] wayPoints;
     private int wayPointIndex = 0;
     private NavMeshAgent agent;
 

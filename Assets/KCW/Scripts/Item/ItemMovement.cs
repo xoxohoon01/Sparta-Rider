@@ -1,8 +1,6 @@
-using Palmmedia.ReportGenerator.Core;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemMovement : MonoBehaviour
 {
@@ -15,7 +13,8 @@ public class ItemMovement : MonoBehaviour
     private bool isBanana;
 
     private GameObject collisionCar;
-    
+    public GameObject tomatoCanvas;
+
     private void Awake()
     {
         ren = GetComponent<Renderer>();
@@ -95,16 +94,15 @@ public class ItemMovement : MonoBehaviour
 
     private void CollideTomato()
     {
-        Canvas _canvas = gameObject.GetComponentInChildren<Canvas>();
-        _canvas.gameObject.SetActive(true);
-        StartCoroutine(CoCollideTomato(_canvas.gameObject));
+        tomatoCanvas.SetActive(true);
+        StartCoroutine(CoCollideTomato(tomatoCanvas));
     }
 
-    private IEnumerator CoCollideTomato(GameObject canvas)
+    private IEnumerator CoCollideTomato(GameObject image)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
         enableItem();
-        canvas.gameObject.SetActive(false);
+        image.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 }

@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSO: {fileID: 11400000, guid: 5a85648926bf57e4484694d832b64c65, type: 2}
+  tomatoImage: {fileID: 2117569361280010380, guid: 3df6b235b5b1f954d97fe52161f082fc, type: 3}

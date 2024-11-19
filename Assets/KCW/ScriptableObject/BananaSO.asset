@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: BananaSO
   m_EditorClassIdentifier: 
   type: 0
-  durationTime: 0
+  durationTime: 3
+  speed: 0

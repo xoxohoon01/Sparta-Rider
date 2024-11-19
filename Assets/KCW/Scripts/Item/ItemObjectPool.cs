@@ -34,19 +34,19 @@ public class ItemObjectPool : MonoBehaviour
                 queue.Enqueue(_pool);
             }
 
-            poolDictionary.Add(pool.itemSO.name, queue);
+            poolDictionary.Add(pool.itemSO.itemName, queue);
         }
     }
 
-    public Pool SpawnFromPool(ItemName name)
+    public Pool SpawnFromPool(ItemName itemName)
     {
-        if (!poolDictionary.ContainsKey(name))
+        if (!poolDictionary.ContainsKey(itemName))
         {
             return null;
         }
 
-        Pool _pool = poolDictionary[name].Dequeue();
-        poolDictionary[name].Enqueue(_pool);
+        Pool _pool = poolDictionary[itemName].Dequeue();
+        poolDictionary[itemName].Enqueue(_pool);
 
         return _pool;
     }

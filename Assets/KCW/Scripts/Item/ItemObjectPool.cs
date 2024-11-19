@@ -14,7 +14,7 @@ public class Pool
 public class ItemObjectPool : MonoBehaviour
 {
     public List<Pool> pools = new List<Pool>();
-    public Dictionary<ItemName, Queue<Pool>> poolDictionary;
+    private Dictionary<ItemName, Queue<Pool>> poolDictionary;
 
     private void Awake()
     {

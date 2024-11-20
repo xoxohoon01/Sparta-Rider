@@ -10,5 +10,10 @@ public class DeadLine : MonoBehaviour
         {
             MidPointManager.Instance.RespawnPlayer(other.gameObject);
         }
+
+        if(other.gameObject.layer == LayerMask.NameToLayer("Item"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 }

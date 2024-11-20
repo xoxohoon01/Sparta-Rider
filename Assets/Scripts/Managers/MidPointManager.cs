@@ -10,11 +10,18 @@ public class MidPointManager : DestroySingleton<MidPointManager>
     private HashSet<int> passedMidPoints = new HashSet<int>(); // 통과한 중간 포인트
     public int currentLap = 1; // 현재 랩
     public int totalLaps = 3; // 총 랩 수
+    public float lapStartTime; // 랩 시작 시간;
+    public float currentLapTime;  // 현재 랩 소요시간
+    public float bestLapTime;  // 최고 기록
+
     private List<MidPoint> midPoints = new List<MidPoint>(); // 모든 중간 포인트
 
     protected override void Awake()
     {
         base.Awake();
+
+        // bestLapTime 초기화
+        bestLapTime = float.MaxValue;
 
         // 기본 스폰 포인트 설정 ("DefaultSpawn" 태그 사용)
         defaultSpawnPoint = GameObject.FindWithTag("DefaultSpawn").transform;
@@ -48,6 +55,11 @@ public class MidPointManager : DestroySingleton<MidPointManager>
         lastPassedMidPoint = defaultSpawnPoint;
     }
 
+    private void Update()
+    {
+        currentLapTime = Time.time - lapStartTime;
+    }
+
 
     public void PassMidpoint(int id, Transform midPointTransform)
     {
@@ -63,6 +75,12 @@ public class MidPointManager : DestroySingleton<MidPointManager>
         if (passedMidPoints.Count == midPoints.Count)
         {
             currentLap++;
+            lapStartTime = Time.time; // 랩 시작 시간 초기화
+            if(currentLapTime < bestLapTime)  // 최고기록 판별
+            {
+                bestLapTime = currentLapTime;
+            }
+
             passedMidPoints.Clear(); // 중간 포인트 초기화
 
             if (currentLap > totalLaps)
@@ -78,6 +96,7 @@ public class MidPointManager : DestroySingleton<MidPointManager>
         // 레이스가 끝났을 때의 처리 로직
         Debug.Log("Race Ended!");
         // TODO : 게임 결과 UI 표시, 플레이어 제어 비활성화
+        Time.timeScale = 0f;
     }
 
     public void RespawnPlayer(GameObject player)
@@ -92,5 +111,10 @@ public class MidPointManager : DestroySingleton<MidPointManager>
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
+    }
+
+    public void ResetTimer()
+    {
+        currentLapTime = 0; // 현재 시간을 기준으로 초기화
     }
 }

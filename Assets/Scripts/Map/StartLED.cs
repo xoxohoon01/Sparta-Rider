@@ -43,5 +43,7 @@ public class StartLED : MonoBehaviour
         lightB.material = StartLEDGreen;
         lightC.material = StartLEDGreen;
         //player.maxSpeed = original;
+        MidPointManager.Instance.lapStartTime = Time.time;
     }
+
 }

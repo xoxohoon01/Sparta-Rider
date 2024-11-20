@@ -19,10 +19,10 @@ public class GameManager : MonoSingleton<GameManager>
         SceneManager.LoadScene($"{sceneType.ToString()}");
     }
     
-    public void LoadStartScene() => LoadScene(SceneType.StartScene);
-    public void LoadMapChoiceScene() => LoadScene(SceneType.MapChoiceScene);
-    public void LoadCarChoiceScene() => LoadScene(SceneType.CarChoiceScene);
-    public void LoadLevelScene() => LoadScene(SceneType.LevelScene);
+    public void LoadStartScene() => MySceneManager.Instance.ChangeScene(SceneType.StartScene);
+    public void LoadMapChoiceScene() => MySceneManager.Instance.ChangeScene(SceneType.MapChoiceScene);
+    public void LoadCarChoiceScene() => MySceneManager.Instance.ChangeScene(SceneType.CarChoiceScene);
+    public void LoadLevelScene() => MySceneManager.Instance.ChangeScene(SceneType.LevelScene);
 
     public void LoadMainMapScene()
     {

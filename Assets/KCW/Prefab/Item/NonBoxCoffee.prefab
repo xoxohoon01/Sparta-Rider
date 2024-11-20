@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 8764754277029212440}
   - component: {fileID: 2061856414238119549}
   - component: {fileID: -2032304450487561019}
-  - component: {fileID: -8999649164653017426}
-  - component: {fileID: -2355022663476158682}
+  - component: {fileID: -4791366327482341514}
   m_Layer: 10
-  m_Name: Coffee
+  m_Name: NonBoxCoffee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2942548372646016969}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
@@ -135,20 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-8999649164653017426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2942548372646016969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5958445f50fe7940b061315f1967d7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemSO: {fileID: 11400000, guid: 7ecb8fb7d3818f1479915661f576655a, type: 2}
---- !u!114 &-2355022663476158682
+--- !u!114 &-4791366327482341514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

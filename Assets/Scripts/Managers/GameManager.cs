@@ -1,5 +1,13 @@
 using UnityEngine.SceneManagement;
 
+public enum CarType
+{
+    Red,
+    White,
+    Brown,
+    Yellow
+}
+
 public enum SceneType
 {
     StartScene,
@@ -11,7 +19,7 @@ public enum SceneType
 public class GameManager : MonoSingleton<GameManager>
 {
     public int mapNumber;
-    public int carNumber;       //0 = 기본차, 1 = White, 2 = Brown, 3 = Yellow
+    public CarType carNumber;
     public int gameMode;        //0 = 스피드전, 1 = 아이템전
     
     public void LoadScene(SceneType sceneType)

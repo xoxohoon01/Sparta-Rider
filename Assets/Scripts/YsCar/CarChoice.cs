@@ -54,7 +54,7 @@ public class CarChoice : MonoBehaviour
     
     public void OnChoiceCar()
     {
-        GameManager.Instance.carNumber = number;
+        GameManager.Instance.carNumber = (CarType)number;
         GameManager.Instance.LoadLevelScene();
     }
 }

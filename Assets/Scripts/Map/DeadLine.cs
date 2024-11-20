@@ -11,5 +11,10 @@ public class DeadLine : MonoBehaviour
             Transform topParent = other.transform.root;
             MidPointManager.Instance.RespawnPlayer(topParent.gameObject);
         }
+
+        if(other.gameObject.layer == LayerMask.NameToLayer("Item"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 }

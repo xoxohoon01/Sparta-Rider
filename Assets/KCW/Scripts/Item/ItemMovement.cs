@@ -87,11 +87,11 @@ public class ItemMovement : MonoBehaviour
             carRigidbody = collisionCar.GetComponent<Rigidbody>();
             switch (itemSO.itemName)
             {
-                case ItemName.Banana: CollideBanana(vehicleStatus.currentSpeed); break;
+                case ItemName.Banana: CollideBanana(collisionCar.GetComponent<VehicleController>().carSpeed); break;
                 case ItemName.Tomato: CollideTomato(); break;
-                case ItemName.Coffee: CollideCoffee(vehicleStatus.currentSpeed); break;
-                case ItemName.Cake: CollideCake(vehicleStatus.currentSpeed); break;
-                case ItemName.Watermelon: CollideWatermelon(vehicleStatus.currentSpeed); break;
+                case ItemName.Coffee: CollideCoffee(collisionCar.GetComponent<VehicleController>().carSpeed); break;
+                case ItemName.Cake: CollideCake(collisionCar.GetComponent<VehicleController>().carSpeed); break;
+                case ItemName.Watermelon: CollideWatermelon(collisionCar.GetComponent<VehicleController>().carSpeed); break;
             }
         }
         
@@ -101,7 +101,7 @@ public class ItemMovement : MonoBehaviour
     private void CollideBanana(float initialSpeed)
     {
         isBanana = true;
-        vehicleStatus.currentSpeed = 0f;
+        collisionCar.GetComponent<VehicleController>().carSpeed = 0f;
         StartCoroutine(CoCollideBanana(initialSpeed));
     }
 
@@ -109,7 +109,7 @@ public class ItemMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(itemSO.durationTime);
         isBanana = false;
-        vehicleStatus.currentSpeed = initialSpeed;
+        collisionCar.GetComponent<VehicleController>().carSpeed = initialSpeed;
         enableItem();
         gameObject.SetActive(false);
     }
@@ -133,7 +133,7 @@ public class ItemMovement : MonoBehaviour
     // 커피 사용하면 속도 2배
     private void CollideCoffee(float initialSpeed)
     {
-        vehicleStatus.acceleration *= 2f;
+        collisionCar.GetComponent<VehicleController>().accelerationMultiplier *= 2f;
         StartCoroutine(CoCollideCoffee(initialSpeed));
     }
 
@@ -141,19 +141,19 @@ public class ItemMovement : MonoBehaviour
     private IEnumerator CoCollideCoffee(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        vehicleStatus.acceleration = initialSpeed;
+        collisionCar.GetComponent<VehicleController>().accelerationMultiplier = initialSpeed;
     }
 
     private void CollideCake(float initialSpeed)
     {
-        vehicleStatus.acceleration *= 0.5f;
+        collisionCar.GetComponent<VehicleController>().accelerationMultiplier *= 0.5f;
         StartCoroutine(CoCollideCake(initialSpeed));
     }
 
     private IEnumerator CoCollideCake(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        vehicleStatus.acceleration = initialSpeed;
+        collisionCar.GetComponent<VehicleController>().accelerationMultiplier = initialSpeed;
         enableItem();
         gameObject.SetActive(false);
     }
@@ -161,13 +161,13 @@ public class ItemMovement : MonoBehaviour
     // 수박 맞으면 정해진 시간동안 멈춤
     private void CollideWatermelon(float initialSpeed)
     {
-        vehicleStatus.acceleration = 0f;
+        collisionCar.GetComponent<VehicleController>().accelerationMultiplier = 0f;
     }
 
     private IEnumerator CoCollideWatermelon(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        vehicleStatus.acceleration = initialSpeed;
+        collisionCar.GetComponent<VehicleController>().accelerationMultiplier = initialSpeed;
         enableItem();
         gameObject.SetActive(false);
     }

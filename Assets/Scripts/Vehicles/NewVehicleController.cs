@@ -50,6 +50,7 @@ public class NewVehicleController : MonoBehaviour
 
     float throttleInputAxis;
     float steeringInputAxis;
+    bool isBrake;
 
     private void Start()
     {
@@ -110,7 +111,7 @@ public class NewVehicleController : MonoBehaviour
         }
         if (throttleInputAxis == 0)
         {
-            InvokeRepeating("DecelerateCar", 0, 0.1f);
+            ThrottleOff();
         }
 
         // 스티어링 관련
@@ -121,6 +122,24 @@ public class NewVehicleController : MonoBehaviour
         if (steeringInputAxis == 0)
         {
             ResetSteeringCar();
+        }
+
+        // 드리프트 관련
+        if (UnityEngine.Input.GetKey(KeyCode.Space))
+        {
+            CancelInvoke("DecelerateCar");
+            Handbrake();
+        }
+        if (UnityEngine.Input.GetKeyUp(KeyCode.Space))
+        {
+            RecoverTraction();
+        }
+
+        // 감속 관련
+        if (throttleInputAxis == 0 && steeringInputAxis == 0 && isBrake == false && decelerationCar == false)
+        {
+            InvokeRepeating("DecelerateCar", 0, 0.1f);
+            decelerationCar = true;
         }
 
         AnimateWheelMeshes();
@@ -151,6 +170,13 @@ public class NewVehicleController : MonoBehaviour
             rearLeftCollider.brakeTorque = 0;
             rearRightCollider.brakeTorque = 0;
         }
+    }
+    private void ThrottleOff()
+    {
+        frontLeftCollider.motorTorque = 0;
+        frontRightCollider.motorTorque = 0;
+        rearLeftCollider.motorTorque = 0;
+        rearRightCollider.motorTorque = 0;
     }
 
     // 감속
@@ -310,6 +336,10 @@ public class NewVehicleController : MonoBehaviour
         }
     }
 
+    public void OnBrake(InputValue value)
+    {
+        isBrake = value.isPressed;
+    }
     // 수정할 것 2
     public void Handbrake()
     {

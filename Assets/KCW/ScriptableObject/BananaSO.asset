@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: 0
   itemType: 1
   durationTime: 2
+  rotationNum: 3
   speed: 0

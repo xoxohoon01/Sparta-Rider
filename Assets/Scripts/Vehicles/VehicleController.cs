@@ -162,7 +162,7 @@ public class VehicleController : MonoBehaviour
         // 바나나 밟으면 회전
         if (isBanana)
         {
-            rotateY += 1080f / itemSO.durationTime * Time.fixedDeltaTime;
+            rotateY += 360f * itemSO.rotationNum / itemSO.durationTime * Time.fixedDeltaTime;
             carRigidbody.MoveRotation(Quaternion.Euler(0f, rotateY, 0f));
         }
     }

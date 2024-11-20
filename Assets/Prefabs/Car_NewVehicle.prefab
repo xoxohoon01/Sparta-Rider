@@ -221,10 +221,12 @@ GameObject:
   - component: {fileID: 8876156750485110013}
   - component: {fileID: 3863408737273631785}
   - component: {fileID: 8646718265934980133}
+  - component: {fileID: 4782776707673918467}
   - component: {fileID: 1470578844254670}
-  m_Layer: 0
+  - component: {fileID: 4327833042175378258}
+  m_Layer: 6
   m_Name: Car_NewVehicle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,11 +289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59eadad61de16b4da51c4616a7641ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 200
+  status: {fileID: 0}
   accelerationMultiplier: 6
+  maxSpeed: 200
   maxSteeringAngle: 90
   steeringSpeed: 3
-  brakeForce: 2
   decelerationMultiplier: 0.01
   handbrakeDriftMultiplier: 2
   frontLeftMesh: {fileID: 8651445213024598189}
@@ -303,8 +305,30 @@ MonoBehaviour:
   rearLeftCollider: {fileID: 6167438719745421218}
   rearRightCollider: {fileID: 177113575018990347}
   carSpeed: 0
-  isDrifting: 0
-  isTractionLocked: 0
+  throttleAxis: 0
+  steeringAxis: 0
+  driftingAxis: 0
+--- !u!65 &4782776707673918467
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246208248638246169}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7, y: 0.8, z: 4.5}
+  m_Center: {x: -0.1, y: 0.8, z: -0.2}
 --- !u!114 &1470578844254670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +359,20 @@ MonoBehaviour:
   m_DefaultActionMap: Vehicle
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4327833042175378258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246208248638246169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b43e4213144c884a9cb70ec67ba6656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  itemSO: {fileID: 0}
 --- !u!1 &4495488044208205458
 GameObject:
   m_ObjectHideFlags: 0

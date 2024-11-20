@@ -133,7 +133,7 @@ public class ItemMovement : MonoBehaviour
     // 커피 사용하면 속도 2배
     private void CollideCoffee(float initialSpeed)
     {
-        collisionCar.GetComponent<VehicleController>().accelerationMultiplier *= 2f;
+        collisionCar.GetComponent<VehicleController>().itemAccelerationMultiplier *= 2f;
         StartCoroutine(CoCollideCoffee(initialSpeed));
     }
 
@@ -141,19 +141,19 @@ public class ItemMovement : MonoBehaviour
     private IEnumerator CoCollideCoffee(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        collisionCar.GetComponent<VehicleController>().accelerationMultiplier = initialSpeed;
+        collisionCar.GetComponent<VehicleController>().itemAccelerationMultiplier = initialSpeed;
     }
 
     private void CollideCake(float initialSpeed)
     {
-        collisionCar.GetComponent<VehicleController>().accelerationMultiplier *= 0.5f;
+        collisionCar.GetComponent<VehicleController>().itemAccelerationMultiplier *= 0.5f;
         StartCoroutine(CoCollideCake(initialSpeed));
     }
 
     private IEnumerator CoCollideCake(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        collisionCar.GetComponent<VehicleController>().accelerationMultiplier = initialSpeed;
+        collisionCar.GetComponent<VehicleController>().itemAccelerationMultiplier = initialSpeed;
         enableItem();
         gameObject.SetActive(false);
     }
@@ -161,13 +161,13 @@ public class ItemMovement : MonoBehaviour
     // 수박 맞으면 정해진 시간동안 멈춤
     private void CollideWatermelon(float initialSpeed)
     {
-        collisionCar.GetComponent<VehicleController>().accelerationMultiplier = 0f;
+        collisionCar.GetComponent<VehicleController>().itemAccelerationMultiplier = 0f;
     }
 
     private IEnumerator CoCollideWatermelon(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        collisionCar.GetComponent<VehicleController>().accelerationMultiplier = initialSpeed;
+        collisionCar.GetComponent<VehicleController>().itemAccelerationMultiplier = initialSpeed;
         enableItem();
         gameObject.SetActive(false);
     }

@@ -9,12 +9,16 @@ using UnityEngine.Windows;
 public class VehicleController : MonoBehaviour
 {
     public VehicleStatus status;
-    public float accelerationMultiplier;        // 가속도 계수
-    public float maxSpeed;                      // 최대속도
-    public float maxSteeringAngle;              // 조향 계수
-    public float steeringSpeed;                 // 조향 속도
-    public float decelerationMultiplier;        // 감속 계수
-    public float handbrakeDriftMultiplier;      // 드리프트 계수
+    private float accelerationMultiplier;        // 가속도 계수
+    private float maxSpeed;                      // 최대속도
+    private float maxSteeringAngle;              // 조향 계수
+    private float steeringSpeed;                 // 조향 속도
+    private float decelerationMultiplier;        // 감속 계수
+    private float handbrakeDriftMultiplier;      // 드리프트 계수
+
+    public float itemAccelerationMultiplier = 1f;
+    public float itemSteeringMultiplier = 1f;
+    public float itemDriftMultiplier = 1f;
 
     public GameObject frontLeftMesh;
     public GameObject frontRightMesh;
@@ -157,13 +161,13 @@ public class VehicleController : MonoBehaviour
         {
             throttleAxis = Mathf.Min(throttleAxis + Time.deltaTime, 1);
             frontLeftCollider.brakeTorque = 0;
-            frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * throttleInputAxis;
+            frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
             frontRightCollider.brakeTorque = 0;
-            frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * throttleInputAxis;
+            frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
             rearLeftCollider.brakeTorque = 0;
-            rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * throttleInputAxis;
+            rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
             rearRightCollider.brakeTorque = 0;
-            rearRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * throttleInputAxis;
+            rearRightCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
         }
         else
         {
@@ -222,7 +226,7 @@ public class VehicleController : MonoBehaviour
     private void SteeringCar()
     {
         steeringAxis = Mathf.Clamp(steeringAxis + (Time.deltaTime * steeringInputAxis), -1f, 1f);
-        var steeringAngle = steeringAxis * maxSteeringAngle;
+        var steeringAngle = steeringAxis * itemSteeringMultiplier * maxSteeringAngle;
         frontLeftCollider.steerAngle = Mathf.Lerp(frontLeftCollider.steerAngle, steeringAngle, steeringSpeed);
         frontRightCollider.steerAngle = Mathf.Lerp(frontRightCollider.steerAngle, steeringAngle, steeringSpeed);
     }
@@ -343,7 +347,7 @@ public class VehicleController : MonoBehaviour
         CancelInvoke("RecoverTraction");
 
         // 드리프트 유지 중, 드리프트 계수 점차 상승
-        driftingAxis = driftingAxis + (Time.deltaTime);
+        driftingAxis += itemDriftMultiplier * (Time.deltaTime);
         float secureStartingPoint = driftingAxis * FLWextremumSlip * handbrakeDriftMultiplier;
 
         // 드리프트 시작 시 이동 방향과 힘의 방향 고려하여 드리프트 계수 선택 (0 < 계수 < 1)

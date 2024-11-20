@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.Windows;
+using static UnityEditor.Progress;
 
 public class VehicleController : MonoBehaviour
 {
@@ -52,6 +53,11 @@ public class VehicleController : MonoBehaviour
     float throttleInputAxis;        // W, S 누를 시 리턴 값 (-1, 0, 1)
     float steeringInputAxis;        // A, D 누를 시 리턴 값 (-1, 0, 1)
     bool isBrake;
+
+    // 바나나 회전용
+    public ItemSO itemSO;
+    public bool isBanana;
+    public float rotateY;
 
     private void Start()
     {
@@ -149,6 +155,16 @@ public class VehicleController : MonoBehaviour
         }
 
         AnimateWheelMeshes();
+    }
+
+    private void FixedUpdate()
+    {
+        // 바나나 밟으면 회전
+        if (isBanana)
+        {
+            rotateY += 1080f / itemSO.durationTime * Time.fixedDeltaTime;
+            carRigidbody.MoveRotation(Quaternion.Euler(0f, rotateY, 0f));
+        }
     }
 
     public void OnAccel(InputValue value)

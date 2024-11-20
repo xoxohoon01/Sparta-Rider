@@ -13,25 +13,14 @@ public class ItemController : MonoBehaviour
     public ItemSO itemSO;
 
     private VehicleController vehicleController;
-    private PlayerInput playerInput;
+    private Collider vehicleCollider;
 
     private void Awake()
     {
         vehicleController = GetComponent<VehicleController>();
+        vehicleCollider = GetComponent<Collider>();
 
-        // 차의 z 축 크기 계산
-        Renderer[] _renderers = GetComponentsInChildren<Renderer>();
-        if (_renderers.Length > 0)
-        {
-            Bounds _combinedBounds = _renderers[0].bounds;
-
-            foreach (Renderer renderer in _renderers)
-            {
-                _combinedBounds.Encapsulate(renderer.bounds);
-            }
-
-            CarSizeZ = _combinedBounds.size.z;
-        }
+        CarSizeZ = vehicleCollider.bounds.size.z;
     }
 
     // Box 객체가 가지고 있는 ItemGenerator를 통해 Pool 가져오기

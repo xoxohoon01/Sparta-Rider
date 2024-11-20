@@ -11,6 +11,7 @@ public class UIInMap : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentLapTimeText;
     [SerializeField] private TextMeshProUGUI bestLapTimeText;
     [SerializeField] private Image item;
+    [SerializeField] private GameObject GameOverUI;
 
     [SerializeField] Sprite[] itemImages;
 
@@ -21,12 +22,13 @@ public class UIInMap : MonoBehaviour
 
     private int kmPerHour = 5;
 
-    private void Awake()
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = player.GetComponent<Rigidbody>();
         vehicleController = player.GetComponent<VehicleController>();
         itemController = player.GetComponent<ItemController>();
+        GameOverUI.SetActive(false);
     }
 
     // Update is called once per frame

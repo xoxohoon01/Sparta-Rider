@@ -34,6 +34,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void LoadMainMapScene()
     {
+        SoundManager.Instance.OnInGameBGM();
         SceneManager.LoadScene($"Map{mapNumber}Scene");
     }
 }

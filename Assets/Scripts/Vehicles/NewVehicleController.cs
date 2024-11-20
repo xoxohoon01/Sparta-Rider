@@ -8,14 +8,13 @@ using UnityEngine.Windows;
 
 public class NewVehicleController : MonoBehaviour
 {
-    public float maxSpeed;      // 최대속도
-    public float accelerationMultiplier;        // 가속도 계수
-    public float maxSteeringAngle;      // 조향 계수
-    public float steeringSpeed;     // 조향 속도
-
-    public float brakeForce;        // 브레이크 힘
-    public float decelerationMultiplier;        // 감속 계수
-    public float handbrakeDriftMultiplier;      // 드리프트 계수
+    public VehicleStatus status;
+    private float accelerationMultiplier;        // 가속도 계수
+    private float maxSpeed;                      // 최대속도
+    private float maxSteeringAngle;              // 조향 계수
+    private float steeringSpeed;                 // 조향 속도
+    private float decelerationMultiplier;        // 감속 계수
+    private float handbrakeDriftMultiplier;      // 드리프트 계수
 
     public GameObject frontLeftMesh;
     public GameObject frontRightMesh;
@@ -26,17 +25,15 @@ public class NewVehicleController : MonoBehaviour
     public WheelCollider rearLeftCollider;
     public WheelCollider rearRightCollider;
 
-    public float carSpeed;
-    public bool isDrifting;
-    public bool isTractionLocked;
+    public float carSpeed;          //현재 속도 (UI에 표시될 속도)
 
     private Rigidbody carRigidbody;
-    private float throttleAxis;     // W, S 누를 시 리턴값 (-1, 0, 1)
-    private float steeringAxis;     // A, D 누를 시 리턴값 (-1, 0, 1)
-    private float driftingAxis;     // 드리프트시 리턴값 (0, 1)
-    private float localVelocityZ;   // 차 기준 Z축으로 가해지는 힘
-    private float localVelocityX;   // 차 기준 X축으로 가해지는 힘
-    private bool decelerationCar;   // 차가 감속중인지 판별
+    public float throttleAxis;     // 현재 가속 값
+    public float steeringAxis;     // 현재 스티어링 값
+    public float driftingAxis;     // 현재 드리프트 계수값 (0.0 ~ 1.0)
+    private float localVelocityZ;   // 차 기준 Z축으로 가해지는 힘 (드리프트)
+    private float localVelocityX;   // 차 기준 X축으로 가해지는 힘 (드리프트)
+    private bool decelerationCar;   // 차가 감속중인지 판별 (true: 차 속도가 줄어듬)
 
     // 휠 콜라이더별 마찰력 컴포넌트
     WheelFrictionCurve FLwheelFriction;
@@ -48,8 +45,8 @@ public class NewVehicleController : MonoBehaviour
     WheelFrictionCurve RRwheelFriction;
     float RRWextremumSlip;
 
-    float throttleInputAxis;
-    float steeringInputAxis;
+    float throttleInputAxis;        // W, S 누를 시 리턴 값 (-1, 0, 1)
+    float steeringInputAxis;        // A, D 누를 시 리턴 값 (-1, 0, 1)
     bool isBrake;
 
     private void Start()
@@ -94,6 +91,15 @@ public class NewVehicleController : MonoBehaviour
         RRwheelFriction.stiffness = rearRightCollider.sidewaysFriction.stiffness;
         #endregion
 
+        // 차체 성능 초기화
+        carRigidbody.mass = status.mass;
+        maxSpeed = status.maxSpeed;
+        maxSteeringAngle = status.maxSteeringAngle;
+        steeringSpeed = status.steeringSpeed;
+        accelerationMultiplier = status.accelerationMultiplier;
+        decelerationMultiplier = status.decelerationMultiplier;
+        handbrakeDriftMultiplier = status.handbrakeDriftMultiplier;
+
     }
 
     private void Update()
@@ -125,14 +131,10 @@ public class NewVehicleController : MonoBehaviour
         }
 
         // 드리프트 관련
-        if (UnityEngine.Input.GetKey(KeyCode.Space))
+        if (isBrake)
         {
             CancelInvoke("DecelerateCar");
             Handbrake();
-        }
-        if (UnityEngine.Input.GetKeyUp(KeyCode.Space))
-        {
-            RecoverTraction();
         }
 
         // 감속 관련
@@ -182,14 +184,6 @@ public class NewVehicleController : MonoBehaviour
     // 감속
     public void DecelerateCar()
     {
-        if (Mathf.Abs(localVelocityX) > 2.5f)
-        {
-            isDrifting = true;
-        }
-        else
-        {
-            isDrifting = false;
-        }
 
         if (throttleAxis != 0f)
         {
@@ -207,13 +201,12 @@ public class NewVehicleController : MonoBehaviour
             }
         }
         carRigidbody.velocity = carRigidbody.velocity * (1f / (1f + (0.025f * decelerationMultiplier)));
-        // Since we want to decelerate the car, we are going to remove the torque from the wheels of the car.
+
         frontLeftCollider.motorTorque = 0;
         frontRightCollider.motorTorque = 0;
         rearLeftCollider.motorTorque = 0;
         rearRightCollider.motorTorque = 0;
-        // If the magnitude of the car's velocity is less than 0.25f (very slow velocity), then stop the car completely and
-        // also cancel the invoke of this method.
+
         if (carRigidbody.velocity.magnitude < 0.25f)
         {
             carRigidbody.velocity = Vector3.zero;
@@ -288,19 +281,17 @@ public class NewVehicleController : MonoBehaviour
         }
     }
 
-    // 수정할 것 1
+    // 드리프트 끝나고 휠 콜라이더 마찰력 계수 복귀
     public void RecoverTraction()
     {
-        isTractionLocked = false;
+        // 드리프트 계수 점차 감소 (최소인 0까지)
         driftingAxis = driftingAxis - (Time.deltaTime / 1.5f);
         if (driftingAxis < 0f)
         {
             driftingAxis = 0f;
         }
 
-        //If the 'driftingAxis' value is not 0f, it means that the wheels have not recovered their traction.
-        //We are going to continue decreasing the sideways friction of the wheels until we reach the initial
-        // car's grip.
+        // 현재 마찰력 계수가 
         if (FLwheelFriction.extremumSlip > FLWextremumSlip)
         {
             FLwheelFriction.extremumSlip = FLWextremumSlip * handbrakeDriftMultiplier * driftingAxis;
@@ -339,38 +330,34 @@ public class NewVehicleController : MonoBehaviour
     public void OnBrake(InputValue value)
     {
         isBrake = value.isPressed;
+
+        if (!value.isPressed)
+        {
+            RecoverTraction();
+        }
     }
-    // 수정할 것 2
+    
+    // 드리프트
     public void Handbrake()
     {
         CancelInvoke("RecoverTraction");
-        // We are going to start losing traction smoothly, there is were our 'driftingAxis' variable takes
-        // place. This variable will start from 0 and will reach a top value of 1, which means that the maximum
-        // drifting value has been reached. It will increase smoothly by using the variable Time.deltaTime.
+
+        // 드리프트 유지 중, 드리프트 계수 점차 상승
         driftingAxis = driftingAxis + (Time.deltaTime);
         float secureStartingPoint = driftingAxis * FLWextremumSlip * handbrakeDriftMultiplier;
 
+        // 드리프트 시작 시 이동 방향과 힘의 방향 고려하여 드리프트 계수 선택 (0 < 계수 < 1)
         if (secureStartingPoint < FLWextremumSlip)
         {
             driftingAxis = FLWextremumSlip / (FLWextremumSlip * handbrakeDriftMultiplier);
         }
+
+        // 드리프트 계수가 1보다 많을 경우 1로 고정
         if (driftingAxis > 1f)
         {
             driftingAxis = 1f;
         }
-        //If the forces aplied to the rigidbody in the 'x' asis are greater than
-        //3f, it means that the car lost its traction, then the car will start emitting particle systems.
-        if (Mathf.Abs(localVelocityX) > 2.5f)
-        {
-            isDrifting = true;
-        }
-        else
-        {
-            isDrifting = false;
-        }
-        //If the 'driftingAxis' value is not 1f, it means that the wheels have not reach their maximum drifting
-        //value, so, we are going to continue increasing the sideways friction of the wheels until driftingAxis
-        // = 1f.
+
         if (driftingAxis < 1f)
         {
             FLwheelFriction.extremumSlip = FLWextremumSlip * handbrakeDriftMultiplier * driftingAxis;
@@ -385,10 +372,6 @@ public class NewVehicleController : MonoBehaviour
             RRwheelFriction.extremumSlip = RRWextremumSlip * handbrakeDriftMultiplier * driftingAxis;
             rearRightCollider.sidewaysFriction = RRwheelFriction;
         }
-
-        // Whenever the player uses the handbrake, it means that the wheels are locked, so we set 'isTractionLocked = true'
-        // and, as a consequense, the car starts to emit trails to simulate the wheel skids.
-        isTractionLocked = true;
 
     }
 }

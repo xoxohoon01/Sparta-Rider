@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CakeSO
   m_EditorClassIdentifier: 
   itemName: 3
+  itemType: 1
   durationTime: 5
   speed: 0

@@ -1,20 +1,23 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEditor.Progress;
 
 public class ItemController : MonoBehaviour
 {
     private ItemMovement itemMovement;
-    private VehicleController vehicleController;
     private float CarSizeZ;
 
     public GameObject item;
     public ItemSO itemSO;
 
+    private VehicleStatus vehicleStatus;
+    private PlayerInput playerInput;
+
     private void Awake()
     {
-        vehicleController = GetComponent<VehicleController>();
+        vehicleStatus = new VehicleStatus();
 
         // 차의 z 축 크기 계산
         Renderer[] _renderers = GetComponentsInChildren<Renderer>();
@@ -46,17 +49,8 @@ public class ItemController : MonoBehaviour
     {
         if (item)
         {
-            if (itemSO.itemName == ItemName.Coffee)
-            {
-                // 코루틴에서 itemSO 사용
-                StartCoroutine(CoBooster(vehicleController.acceleration));
-                vehicleController.acceleration *= 2f;
-            }
-            else
-            {
-                SetItem();
-                itemMovement.Move(transform.forward);
-            }
+            if(itemSO.itemType != ItemType.None) SetItem();
+            itemMovement.CheckMoveItem(transform.forward, vehicleStatus, playerInput);
             item = null;
             itemSO = null;
         }
@@ -75,11 +69,5 @@ public class ItemController : MonoBehaviour
             // 자동차 뒤에 위치
             item.transform.position = transform.position + CarSizeZ * 0.6f * -transform.forward;
         }
-    }
-
-    private IEnumerator CoBooster(float initialSpeed)
-    {
-        yield return new WaitForSeconds(itemSO.durationTime);
-        vehicleController.acceleration = initialSpeed;
     }
 }

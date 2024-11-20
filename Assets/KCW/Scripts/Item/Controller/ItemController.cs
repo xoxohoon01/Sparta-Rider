@@ -56,10 +56,11 @@ public class ItemController : MonoBehaviour
         }
     }
 
+    // ItemType이 Move, Idle일 때만 실행 (None이면 실행 안됨)
     private void SetItem()
     {
         item.SetActive(true);
-        if (itemSO.speed > 0)
+        if (itemSO.itemType == ItemType.Move)
         {
             // 자동차 앞에 위치
             item.transform.position = transform.position + CarSizeZ * 0.6f * transform.forward;

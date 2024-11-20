@@ -52,7 +52,7 @@ public class ItemMovement : MonoBehaviour
     }
 
     // 이동 방향 설정
-    public void Move(Vector3 forward)
+    private void Move(Vector3 forward)
     {
         moveDirection = forward;
     }
@@ -94,7 +94,6 @@ public class ItemMovement : MonoBehaviour
                 case ItemName.Watermelon: CollideWatermelon(collisionCar.GetComponent<VehicleController>().carSpeed); break;
             }
         }
-        
     }
 
     // 바나나 밟을 때
@@ -136,7 +135,6 @@ public class ItemMovement : MonoBehaviour
         collisionCar.GetComponent<VehicleController>().accelerationMultiplier *= 2f;
         StartCoroutine(CoCollideCoffee(initialSpeed));
     }
-
 
     private IEnumerator CoCollideCoffee(float initialSpeed)
     {

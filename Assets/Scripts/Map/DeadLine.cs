@@ -8,7 +8,8 @@ public class DeadLine : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            MidPointManager.Instance.RespawnPlayer(other.gameObject);
+            Transform topParent = other.transform.root;
+            MidPointManager.Instance.RespawnPlayer(topParent.gameObject);
         }
 
         if(other.gameObject.layer == LayerMask.NameToLayer("Item"))

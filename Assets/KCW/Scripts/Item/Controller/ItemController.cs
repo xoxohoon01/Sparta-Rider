@@ -12,12 +12,12 @@ public class ItemController : MonoBehaviour
     public GameObject item;
     public ItemSO itemSO;
 
-    private VehicleStatus vehicleStatus;
+    private VehicleController vehicleController;
     private PlayerInput playerInput;
 
     private void Awake()
     {
-        vehicleStatus = new VehicleStatus();
+        vehicleController = GetComponent<VehicleController>();
 
         // 차의 z 축 크기 계산
         Renderer[] _renderers = GetComponentsInChildren<Renderer>();
@@ -50,7 +50,7 @@ public class ItemController : MonoBehaviour
         if (item)
         {
             if(itemSO.itemType != ItemType.None) SetItem();
-            itemMovement.CheckMoveItem(transform.forward, vehicleStatus);
+            itemMovement.CheckMoveItem(transform.forward, vehicleController);
             item = null;
             itemSO = null;
         }

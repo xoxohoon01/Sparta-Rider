@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 7273982714708024948}
   - component: {fileID: 1659658979497754680}
   - component: {fileID: 486442796430998775}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -899,7 +899,7 @@ GameObject:
   - component: {fileID: 2659274871405734830}
   m_Layer: 6
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   rearLeftWheelMesh: {fileID: 1100722867652604435}
   rearRightWheelMesh: {fileID: 1335865356408936051}
   motorTorque: 200
-  maxSteerAngle: 30
+  steerForce: 50
   acceleration: 200
   maxSpeed: 500
   driftFriction: 0.5

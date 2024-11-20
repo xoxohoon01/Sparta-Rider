@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class ItemGenerator : MonoBehaviour
 {
-    private WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
-    
     // ItemControl이랑 같은지 확인용
     public GameObject generatorItem;
     public ItemSO generatorItemSo;

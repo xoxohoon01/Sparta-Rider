@@ -11,7 +11,6 @@ public class ItemMovement : MonoBehaviour
     private float itemSizeZ;
     private float itemSizeY;
 
-    private GameObject collisionCar;
     private VehicleController vehicleController;
 
     private void Awake()
@@ -31,12 +30,17 @@ public class ItemMovement : MonoBehaviour
         }
     }
 
-    // 움직이는 객체만 Move로 이동
-    public void CheckMoveItem(Vector3 forward, VehicleController vcontroller)
+    public void SetVehicleController(VehicleController vController)
     {
-        vehicleController = vcontroller;
-        vehicleController.rotateY = 0f;
+        vehicleController = vController;
+        vehicleController.totalRotate = 0f;
         vehicleController.itemSO = itemSO;
+    }
+
+    // 움직이는 객체만 Move로 이동
+    public void CheckMoveItem(Vector3 forward, VehicleController vController)
+    {
+        SetVehicleController(vController);
         SetPosition();
         if (itemSO.itemType == ItemType.Move) Move(forward);
     }
@@ -78,7 +82,7 @@ public class ItemMovement : MonoBehaviour
             collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             disableItem();
-            collisionCar = collision.gameObject;
+
             switch (itemSO.itemName)
             {
                 case ItemName.Banana: CollideBanana(vehicleController.itemAccelerationMultiplier); break;

@@ -57,7 +57,7 @@ public class VehicleController : MonoBehaviour
     // 바나나 회전용
     public ItemSO itemSO;
     public bool isBanana;
-    public float rotateY;
+    public float totalRotate;
 
     private void Start()
     {
@@ -162,8 +162,21 @@ public class VehicleController : MonoBehaviour
         // 바나나 밟으면 회전
         if (isBanana)
         {
-            rotateY += 360f * itemSO.rotationNum / itemSO.durationTime * Time.fixedDeltaTime;
-            carRigidbody.MoveRotation(Quaternion.Euler(0f, rotateY, 0f));
+            float targetRotation = 360f * itemSO.rotationNum;
+            float deltaRotation = targetRotation / itemSO.durationTime * Time.fixedDeltaTime;
+            totalRotate += deltaRotation;
+
+            // 더 돌지 않도록 제한
+            if (totalRotate >= targetRotation)
+            {
+                deltaRotation = Mathf.Min(totalRotate, targetRotation);
+                isBanana = false;
+                totalRotate = 0f;
+            }
+
+            // 회전 적용
+            Quaternion rotationDelta = Quaternion.Euler(0f, deltaRotation, 0f);
+            carRigidbody.MoveRotation(carRigidbody.rotation * rotationDelta);
         }
     }
 

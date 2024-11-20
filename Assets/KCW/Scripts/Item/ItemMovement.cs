@@ -4,7 +4,6 @@ using UnityEngine;
 public class ItemMovement : MonoBehaviour
 {
     [SerializeField] private ItemSO itemSO;
-    private ItemContactController contactController;
     private Vector3 moveDirection = Vector3.zero;
     private Rigidbody rb;
     private Collider col;
@@ -15,7 +14,6 @@ public class ItemMovement : MonoBehaviour
 
     private void Awake()
     {
-        contactController = GetComponent<ItemContactController>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         itemSizeZ = col.bounds.size.z;

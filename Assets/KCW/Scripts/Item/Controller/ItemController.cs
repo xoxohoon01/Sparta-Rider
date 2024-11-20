@@ -50,7 +50,7 @@ public class ItemController : MonoBehaviour
         if (item)
         {
             if(itemSO.itemType != ItemType.None) SetItem();
-            itemMovement.CheckMoveItem(transform.forward, vehicleStatus, playerInput);
+            itemMovement.CheckMoveItem(transform.forward, vehicleStatus);
             item = null;
             itemSO = null;
         }

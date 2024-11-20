@@ -8,8 +8,8 @@ public class MidPointManager : DestroySingleton<MidPointManager>
     private Transform defaultSpawnPoint; // 초기 스폰 포인트
     private Transform lastPassedMidPoint; // 마지막으로 통과한 중간 포인트
     private HashSet<int> passedMidPoints = new HashSet<int>(); // 통과한 중간 포인트
-    private int currentLap = 0; // 현재 랩
-    private int totalLaps = 3; // 총 랩 수
+    public int currentLap = 1; // 현재 랩
+    public int totalLaps = 3; // 총 랩 수
     private List<MidPoint> midPoints = new List<MidPoint>(); // 모든 중간 포인트
 
     protected override void Awake()
@@ -66,8 +66,9 @@ public class MidPointManager : DestroySingleton<MidPointManager>
             currentLap++;
             passedMidPoints.Clear(); // 중간 포인트 초기화
 
-            if (currentLap >= totalLaps)
+            if (currentLap > totalLaps)
             {
+                currentLap--; // 표시는 totalLaps로
                 OnRaceFinished();
             }
         }

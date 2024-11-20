@@ -7,6 +7,7 @@ public class CarChoice : MonoBehaviour
 {
     [SerializeField] private GameObject carObject;
     private float time = 1;
+    private int number = 0;
 
     private void Update()
     {
@@ -19,6 +20,7 @@ public class CarChoice : MonoBehaviour
         {
             carObject.transform.DOLocalMoveX(carObject.transform.localPosition.x - 13, 1);
             time = 0;
+            number += 1;
         }
         else
         {
@@ -26,6 +28,7 @@ public class CarChoice : MonoBehaviour
             {
                 carObject.transform.DOLocalMoveX(0, 1);
                 time = 0;
+                number = 0;
             }
         }
     }
@@ -36,6 +39,7 @@ public class CarChoice : MonoBehaviour
         {
             carObject.transform.DOLocalMoveX(carObject.transform.localPosition.x + 13, 1);
             time = 0;
+            number -= 1;
         }
         else
         {
@@ -43,12 +47,14 @@ public class CarChoice : MonoBehaviour
             {
                 carObject.transform.DOLocalMoveX(-39, 1);
                 time = 0;
+                number = 3;
             }
         }
     }
     
     public void OnChoiceCar()
     {
+        GameManager.Instance.carNumber = number;
         GameManager.Instance.LoadLevelScene();
     }
 }

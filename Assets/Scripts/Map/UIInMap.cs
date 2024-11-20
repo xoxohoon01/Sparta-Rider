@@ -15,13 +15,13 @@ public class UIInMap : MonoBehaviour
     [SerializeField] Sprite[] itemImages;
 
     private GameObject player;
-    private NewVehicleSystem vehicleController;
+    private VehicleController vehicleController;
     private ItemController itemController;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        vehicleController = player.GetComponent<NewVehicleSystem>();
+        vehicleController = player.GetComponent<VehicleController>();
         itemController = player.GetComponent<ItemController>();
     }
 
@@ -32,7 +32,7 @@ public class UIInMap : MonoBehaviour
         lapText.text = $"{MidPointManager.Instance.currentLap} / {MidPointManager.Instance.totalLaps}";
 
         // 현재 속도
-        //speedText.text = vehicleController.VehicleStatus.maxSpeed.ToString();
+        speedText.text = Mathf.Abs(vehicleController.carSpeed).ToString("F0");
 
         // 현재 랩 시간
         float currentLapTime = MidPointManager.Instance.currentLapTime;

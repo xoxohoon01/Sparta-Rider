@@ -53,7 +53,7 @@ public class ItemMovement : MonoBehaviour
     private void SetPosition()
     {
         // 아이템 위치 계산
-        if (itemSO.speed > 0) transform.position += itemSizeX * 0.5f * transform.forward;
+        if (itemSO.itemType == ItemType.Move) transform.position += itemSizeX * 0.5f * transform.forward;
         else transform.position += itemSizeX * 0.5f * -transform.forward;
         transform.position += itemSizeY * 0.5f * Vector3.up + new Vector3(0, 0.1f, 0);
     }
@@ -72,7 +72,8 @@ public class ItemMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || 
+            collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             disableItem();
             collisionCar = collision.gameObject;

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TomatoSO
   m_EditorClassIdentifier: 
   itemName: 1
+  itemType: 0
   durationTime: 3
   speed: 30

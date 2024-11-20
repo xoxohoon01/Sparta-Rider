@@ -8,45 +8,35 @@ public class ItemMovement : MonoBehaviour
     private Rigidbody rb;
     private Renderer ren;
     private Collider col;
-    private float itemSizeX;
+    private float itemSizeZ;
     private float itemSizeY;
-    private bool isBanana;
 
     private GameObject collisionCar;
-    private Rigidbody carRigidbody;
     private VehicleController vehicleController;
-
-    private float rotateY;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         ren = GetComponent<Renderer>();
-        itemSizeX = ren.bounds.size.z;
-        itemSizeY = ren.bounds.size.y;
         col = GetComponent<Collider>();
+        itemSizeZ = col.bounds.size.z;
+        itemSizeY = col.bounds.size.y;
     }
 
     private void FixedUpdate()
     {
         if (itemSO.itemType == ItemType.Move)
-        {
+        { 
             rb.velocity = moveDirection * itemSO.speed;
-        }
-
-        // 바나나 밟으면 회전
-        if (isBanana)
-        {
-            rotateY += 1080f / itemSO.durationTime * Time.fixedDeltaTime;
-            carRigidbody.MoveRotation(Quaternion.Euler(0f, rotateY, 0f));
         }
     }
 
     // 움직이는 객체만 Move로 이동
     public void CheckMoveItem(Vector3 forward, VehicleController vcontroller)
     {
-        rotateY = 0f;
         vehicleController = vcontroller;
+        vehicleController.rotateY = 0f;
+        vehicleController.itemSO = itemSO;
         SetPosition();
         if (itemSO.itemType == ItemType.Move) Move(forward);
     }
@@ -60,8 +50,8 @@ public class ItemMovement : MonoBehaviour
     private void SetPosition()
     {
         // 아이템 위치 계산
-        if (itemSO.itemType == ItemType.Move) transform.position += itemSizeX * 0.5f * transform.forward;
-        else transform.position += itemSizeX * 0.5f * -transform.forward;
+        if (itemSO.itemType == ItemType.Move) transform.position += itemSizeZ * 1f * transform.forward;
+        else transform.position += itemSizeZ * 0.5f * -transform.forward;
         transform.position += itemSizeY * 0.5f * Vector3.up + new Vector3(0, 0.1f, 0);
     }
 
@@ -79,19 +69,23 @@ public class ItemMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            gameObject.SetActive(false);
+        }
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || 
             collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             disableItem();
             collisionCar = collision.gameObject;
-            carRigidbody = collisionCar.GetComponent<Rigidbody>();
             switch (itemSO.itemName)
             {
-                case ItemName.Banana: CollideBanana(vehicleController.carSpeed); break;
+                case ItemName.Banana: CollideBanana(vehicleController.itemAccelerationMultiplier); break;
                 case ItemName.Tomato: CollideTomato(); break;
-                case ItemName.Coffee: CollideCoffee(vehicleController.carSpeed); break;
-                case ItemName.Cake: CollideCake(vehicleController.carSpeed); break;
-                case ItemName.Watermelon: CollideWatermelon(vehicleController.carSpeed); break;
+                case ItemName.Coffee: CollideCoffee(vehicleController.itemAccelerationMultiplier); break;
+                case ItemName.Cake: CollideCake(vehicleController.itemAccelerationMultiplier); break;
+                case ItemName.Watermelon: CollideWatermelon(vehicleController.itemAccelerationMultiplier); break;
             }
         }
     }
@@ -99,16 +93,16 @@ public class ItemMovement : MonoBehaviour
     // 바나나 밟을 때
     private void CollideBanana(float initialSpeed)
     {
-        isBanana = true;
-        vehicleController.carSpeed = 0f;
+        vehicleController.isBanana = true;
+        vehicleController.itemAccelerationMultiplier = 0f;
         StartCoroutine(CoCollideBanana(initialSpeed));
     }
 
     private IEnumerator CoCollideBanana(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        isBanana = false;
-        vehicleController.carSpeed = initialSpeed;
+        vehicleController.isBanana = false;
+        vehicleController.itemAccelerationMultiplier = initialSpeed;
         enableItem();
         gameObject.SetActive(false);
     }

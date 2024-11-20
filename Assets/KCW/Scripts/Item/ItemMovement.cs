@@ -132,26 +132,26 @@ public class ItemMovement : MonoBehaviour
     // 커피 사용하면 속도 2배
     private void CollideCoffee(float initialSpeed)
     {
-        vehicleController.accelerationMultiplier *= 2f;
+        vehicleController.itemAccelerationMultiplier *= 2f;
         StartCoroutine(CoCollideCoffee(initialSpeed));
     }
 
     private IEnumerator CoCollideCoffee(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        vehicleController.accelerationMultiplier = initialSpeed;
+        vehicleController.itemAccelerationMultiplier = initialSpeed;
     }
 
     private void CollideCake(float initialSpeed)
     {
-        vehicleController.accelerationMultiplier *= 0.5f;
+        vehicleController.itemAccelerationMultiplier *= 0.5f;
         StartCoroutine(CoCollideCake(initialSpeed));
     }
 
     private IEnumerator CoCollideCake(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        vehicleController.accelerationMultiplier = initialSpeed;
+        vehicleController.itemAccelerationMultiplier = initialSpeed;
         enableItem();
         gameObject.SetActive(false);
     }
@@ -159,13 +159,13 @@ public class ItemMovement : MonoBehaviour
     // 수박 맞으면 정해진 시간동안 멈춤
     private void CollideWatermelon(float initialSpeed)
     {
-        vehicleController.accelerationMultiplier = 0f;
+        vehicleController.itemAccelerationMultiplier = 0f;
     }
 
     private IEnumerator CoCollideWatermelon(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        vehicleController.accelerationMultiplier = initialSpeed;
+        vehicleController.itemAccelerationMultiplier = initialSpeed;
         enableItem();
         gameObject.SetActive(false);
     }

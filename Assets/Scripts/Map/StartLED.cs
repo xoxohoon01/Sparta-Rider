@@ -19,7 +19,7 @@ public class StartLED : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<VehicleController>();
-        original = player.maxSpeed;
+        original = player.itemAccelerationMultiplier;
     }
 
     void Start()
@@ -29,7 +29,7 @@ public class StartLED : MonoBehaviour
 
     public IEnumerator CoLights()
     {
-        player.maxSpeed = 0;
+        player.itemAccelerationMultiplier = 0;
         lightA.material = StartLEDBlack;
         lightB.material = StartLEDBlack;
         lightC.material = StartLEDBlack;
@@ -42,7 +42,7 @@ public class StartLED : MonoBehaviour
         lightA.material = StartLEDGreen; 
         lightB.material = StartLEDGreen;
         lightC.material = StartLEDGreen;
-        player.maxSpeed = original;
+        player.itemAccelerationMultiplier = original;
         MidPointManager.Instance.lapStartTime = Time.time;
     }
 

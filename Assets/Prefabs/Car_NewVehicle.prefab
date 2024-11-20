@@ -221,7 +221,6 @@ GameObject:
   - component: {fileID: 8876156750485110013}
   - component: {fileID: 3863408737273631785}
   - component: {fileID: 8646718265934980133}
-  - component: {fileID: 4782776707673918467}
   - component: {fileID: 1470578844254670}
   - component: {fileID: 4327833042175378258}
   - component: {fileID: 1096631486866799012}
@@ -309,27 +308,6 @@ MonoBehaviour:
   throttleAxis: 0
   steeringAxis: 0
   driftingAxis: 0
---- !u!65 &4782776707673918467
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4246208248638246169}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1.7, y: 0.8, z: 4.5}
-  m_Center: {x: -0.1, y: 0.8, z: -0.2}
 --- !u!114 &1470578844254670
 MonoBehaviour:
   m_ObjectHideFlags: 0

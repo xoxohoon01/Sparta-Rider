@@ -7,3 +7,10 @@ public enum ItemName
     Watermelon, // 멈춤
     Count // Type 개수
 }
+
+public enum ItemType
+{
+    Move,
+    Idle,
+    None,
+}

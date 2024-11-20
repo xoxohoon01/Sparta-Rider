@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CoffeeSO
   m_EditorClassIdentifier: 
   itemName: 2
+  itemType: 2
   durationTime: 5
   speed: 0

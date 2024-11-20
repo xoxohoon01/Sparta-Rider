@@ -1,12 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class ItemMovement : MonoBehaviour
 {
     [SerializeField] private ItemSO itemSO;
     private Vector3 moveDirection = Vector3.zero;
+    private Rigidbody rb;
     private Renderer ren;
     private Collider col;
     private float itemSizeX;
@@ -14,31 +13,39 @@ public class ItemMovement : MonoBehaviour
     private bool isBanana;
 
     private GameObject collisionCar;
+    private Rigidbody carRigidbody;
     private VehicleStatus vehicleStatus;
+
+    float rotateY;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         ren = GetComponent<Renderer>();
         itemSizeX = ren.bounds.size.z;
         itemSizeY = ren.bounds.size.y;
         col = GetComponent<Collider>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        // ItemType이 Move 이면 아이템 이동
-        if(itemSO.itemType == ItemType.Move) transform.position += itemSO.speed * Time.deltaTime * moveDirection;
-        
+        if (itemSO.itemType == ItemType.Move)
+        {
+            rb.velocity = moveDirection * itemSO.speed;
+        }
+
         // 바나나 밟으면 회전
         if (isBanana)
         {
-            collisionCar.transform.Rotate(0f, 1080f / itemSO.durationTime * Time.deltaTime, 0f);
+            rotateY += 1080f / itemSO.durationTime * Time.fixedDeltaTime;
+            carRigidbody.MoveRotation(Quaternion.Euler(0f, rotateY, 0f));
         }
     }
 
     // 움직이는 객체만 Move로 이동
-    public void CheckMoveItem(Vector3 forward, VehicleStatus vehicle, PlayerInput input)
+    public void CheckMoveItem(Vector3 forward, VehicleStatus vehicle)
     {
+        rotateY = 0f;
         vehicleStatus = vehicle;
         SetPosition();
         if (itemSO.itemType == ItemType.Move) Move(forward);
@@ -77,6 +84,7 @@ public class ItemMovement : MonoBehaviour
         {
             disableItem();
             collisionCar = collision.gameObject;
+            carRigidbody = collisionCar.GetComponent<Rigidbody>();
             switch (itemSO.itemName)
             {
                 case ItemName.Banana: CollideBanana(vehicleStatus.currentSpeed); break;

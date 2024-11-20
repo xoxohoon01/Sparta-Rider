@@ -13,6 +13,7 @@ public class MidPointManager : DestroySingleton<MidPointManager>
     public float lapStartTime; // 랩 시작 시간;
     public float currentLapTime;  // 현재 랩 소요시간
     public float bestLapTime;  // 최고 기록
+    public bool isClear;  // 총 랩 도달시
 
     private List<MidPoint> midPoints = new List<MidPoint>(); // 모든 중간 포인트
 
@@ -20,8 +21,9 @@ public class MidPointManager : DestroySingleton<MidPointManager>
     {
         base.Awake();
 
-        // bestLapTime 초기화
+        // bestLapTime, isClear 초기화
         bestLapTime = float.MaxValue;
+        isClear = false;
 
         // 기본 스폰 포인트 설정 ("DefaultSpawn" 태그 사용)
         defaultSpawnPoint = GameObject.FindWithTag("DefaultSpawn").transform;
@@ -96,6 +98,7 @@ public class MidPointManager : DestroySingleton<MidPointManager>
         // 레이스가 끝났을 때의 처리 로직
         Debug.Log("Race Ended!");
         // TODO : 게임 결과 UI 표시, 플레이어 제어 비활성화
+        isClear = true;
         Time.timeScale = 0f;
     }
 

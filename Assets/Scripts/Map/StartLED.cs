@@ -16,14 +16,10 @@ public class StartLED : MonoBehaviour
     private VehicleController player;
     private float original;
 
-    private void Awake()
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<VehicleController>();
         original = player.itemAccelerationMultiplier;
-    }
-
-    void Start()
-    {
         StartCoroutine(CoLights());
     }
 

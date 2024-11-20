@@ -22,7 +22,7 @@ public class UIInMap : MonoBehaviour
 
     private int kmPerHour = 5;
 
-    private void Awake()
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = player.GetComponent<Rigidbody>();

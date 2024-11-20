@@ -55,7 +55,6 @@ public class MidPointManager : DestroySingleton<MidPointManager>
         {
             passedMidPoints.Add(id);
             lastPassedMidPoint = midPointTransform; // 마지막 통과한 중간 포인트 갱신
-            Debug.Log(id);
         }
     }
 

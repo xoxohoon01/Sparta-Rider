@@ -13,13 +13,13 @@ public class StartLED : MonoBehaviour
     [SerializeField] MeshRenderer lightC;
 
     WaitForSeconds wait = new WaitForSeconds(1);
-    private VehicleController player;
+    private NewVehicleSystem player;
     private float original;
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<VehicleController>();
-        original = player.maxSpeed;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<NewVehicleSystem>();
+        //original = player.VehicleStatus.maxSpeed;
     }
 
     void Start()
@@ -29,7 +29,7 @@ public class StartLED : MonoBehaviour
 
     public IEnumerator CoLights()
     {
-        player.maxSpeed = 0;
+        //player.maxSpeed = 0;
         lightA.material = StartLEDBlack;
         lightB.material = StartLEDBlack;
         lightC.material = StartLEDBlack;
@@ -42,6 +42,6 @@ public class StartLED : MonoBehaviour
         lightA.material = StartLEDGreen; 
         lightB.material = StartLEDGreen;
         lightC.material = StartLEDGreen;
-        player.maxSpeed = original;
+        //player.maxSpeed = original;
     }
 }

@@ -23,6 +23,8 @@
 - 2024.11.15(금) ~ 2024.11.22(금)
 
 ## 와이어프레임
+![F4810B09-FE3C-436F-90C6-BE3B6BE80A6F](https://github.com/user-attachments/assets/17ea84b4-0768-4e8e-9ab1-a90d8c517d0a)
+![77E4DFE7-2DAB-40F1-A306-EF635C39B758](https://github.com/user-attachments/assets/7d1ae2a0-bc6d-41f3-bc69-79c84f5b3c82)
 
 
 ## UML DIAGRAM

@@ -14,6 +14,7 @@ public class ItemContactController : MonoBehaviour
     private Coroutine CoCoffee;
     private Coroutine CoCake;
     private Coroutine CoWatermelon;
+    private Coroutine CoMushroom;
 
     private void Awake()
     {
@@ -66,6 +67,7 @@ public class ItemContactController : MonoBehaviour
                 case ItemName.Coffee: CollideCoffee(_initialSpeed); break;
                 case ItemName.Cake: CollideCake(_initialSpeed); break;
                 case ItemName.Watermelon: CollideWatermelon(); break;
+                case ItemName.Mushroom: CollideMushroom(); break;
             }
         }
     }
@@ -147,6 +149,22 @@ public class ItemContactController : MonoBehaviour
     {
         yield return new WaitForSeconds(itemSO.durationTime);
         vehicleController.itemAccelerationMultiplier = 1f;
+        enableItem();
+        gameObject.SetActive(false);
+    }
+
+    // 일정 시간동안 반전
+    private void CollideMushroom()
+    {
+        vehicleController.isMushroom = true;
+        if (CoMushroom != null) StopCoroutine(CoMushroom);
+        CoMushroom = StartCoroutine(CoCollideMushroom());
+    }
+
+    private IEnumerator CoCollideMushroom()
+    {
+        yield return new WaitForSeconds(itemSO.durationTime);
+        vehicleController.isMushroom = false;
         enableItem();
         gameObject.SetActive(false);
     }

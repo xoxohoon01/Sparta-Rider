@@ -41,6 +41,5 @@ public class ItemSpawnPoint : MonoBehaviour
     {
         yield return waitForSeconds;
         SetItem();
-        Debug.Log("Item generator");
     }
 }

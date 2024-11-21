@@ -76,6 +76,9 @@ MonoBehaviour:
   - item: {fileID: 7889633595426824729, guid: b21f2e10f84537b4f9495f4ce3b95c02, type: 3}
     itemSO: {fileID: 11400000, guid: c5a4b216f2bac3c49a637a3287f44bae, type: 2}
     size: 20
+  - item: {fileID: 279354611227255268, guid: cb3ef57af22711941bca02bb3dd7fee1, type: 3}
+    itemSO: {fileID: 11400000, guid: 7865d76f14012df4bb120c9b35205f51, type: 2}
+    size: 20
 --- !u!1001 &8100836755813919481
 PrefabInstance:
   m_ObjectHideFlags: 0

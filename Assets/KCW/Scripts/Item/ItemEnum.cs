@@ -5,6 +5,7 @@ public enum ItemName
     Coffee, // 부스터
     Cake, // 느려짐
     Watermelon, // 멈춤
+    Mushroom, // 뒤로 이동
 }
 
 public enum ItemType

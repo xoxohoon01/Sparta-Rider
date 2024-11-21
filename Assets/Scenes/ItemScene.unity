@@ -435,53 +435,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5643782891962993254, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: pools.Array.data[0].size
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5643782891962993254, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: pools.Array.data[1].size
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5643782891962993254, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: pools.Array.data[2].size
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5643782891962993254, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: pools.Array.data[3].size
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5643782891962993254, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: pools.Array.data[4].size
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 6128040191353947079, guid: 35131494970fdb24db385e16594d1480, type: 3}
       propertyPath: m_Name
       value: NonBoxItemManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7223547501315355477, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: spawnPointsRoot
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7223547501315355477, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: spawnPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7223547501315355477, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: spawnPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7223547501315355477, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: spawnPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7223547501315355477, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: spawnPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7223547501315355477, guid: 35131494970fdb24db385e16594d1480, type: 3}
-      propertyPath: spawnPoints.Array.data[3]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1285,7 +1241,6 @@ MonoBehaviour:
   speedText: {fileID: 4040467054070694627}
   currentLapTimeText: {fileID: 6105378420289227911}
   bestLapTimeText: {fileID: 7493433241921109037}
-  item: {fileID: 8040028141740293552}
   GameOverUI: {fileID: 2542572288442194638}
   itemImages:
   - {fileID: 21300000, guid: 6681e2769267ac346be3ac2ae5368170, type: 3}

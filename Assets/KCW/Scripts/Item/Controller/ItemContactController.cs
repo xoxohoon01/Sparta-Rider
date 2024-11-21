@@ -14,6 +14,7 @@ public class ItemContactController : MonoBehaviour
     private Coroutine CoCoffee;
     private Coroutine CoCake;
     private Coroutine CoWatermelon;
+    private Coroutine CoMushroom;
 
     private void Awake()
     {
@@ -58,14 +59,14 @@ public class ItemContactController : MonoBehaviour
 
             disableItem();
             SetVehicleController(collision.gameObject.GetComponent<VehicleController>());
-            float _initialSpeed = vehicleController.itemAccelerationMultiplier;
             switch (itemSO.itemName)
             {
                 case ItemName.Banana: CollideBanana(); break;
                 case ItemName.Tomato: CollideTomato(); break;
-                case ItemName.Coffee: CollideCoffee(_initialSpeed); break;
-                case ItemName.Cake: CollideCake(_initialSpeed); break;
+                case ItemName.Coffee: CollideCoffee(); break;
+                case ItemName.Cake: CollideCake(); break;
                 case ItemName.Watermelon: CollideWatermelon(); break;
+                case ItemName.Mushroom: CollideMushroom(); break;
             }
         }
     }
@@ -91,46 +92,45 @@ public class ItemContactController : MonoBehaviour
     // 토마토 맞으면 화면 붉은색으로 변경 
     private void CollideTomato()
     {
-        GameObject _effect = ItemManager.Instance.tomatoEffect;
-        _effect.SetActive(true);
+        ItemManager.Instance.tomatoEffect.SetActive(true);
         if (CoTomato != null) StopCoroutine(CoTomato);
-        CoTomato = StartCoroutine(CoCollideTomato(_effect));
+        CoTomato = StartCoroutine(CoCollideTomato());
     }
 
-    private IEnumerator CoCollideTomato(GameObject image)
+    private IEnumerator CoCollideTomato()
     {
         yield return new WaitForSeconds(itemSO.durationTime);
         enableItem();
-        image.gameObject.SetActive(false);
+        ItemManager.Instance.tomatoEffect.SetActive(false);
         gameObject.SetActive(false);
     }
 
     // 커피 사용하면 속도 2배
-    private void CollideCoffee(float initialSpeed)
+    private void CollideCoffee()
     {
         vehicleController.itemAccelerationMultiplier *= 2f;
         if(CoCoffee != null) StopCoroutine(CoCoffee);
-        CoCoffee = StartCoroutine(CoCollideCoffee(initialSpeed));
+        CoCoffee = StartCoroutine(CoCollideCoffee());
     }
 
-    private IEnumerator CoCollideCoffee(float initialSpeed)
+    private IEnumerator CoCollideCoffee()
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        vehicleController.itemAccelerationMultiplier = initialSpeed;
+        vehicleController.itemAccelerationMultiplier = 1f;
         gameObject.SetActive(false);
     }
 
-    private void CollideCake(float initialSpeed)
+    private void CollideCake()
     {
         vehicleController.itemAccelerationMultiplier *= 0.5f;
         if(CoCake != null) StopCoroutine(CoCake);
-        CoCake = StartCoroutine(CoCollideCake(initialSpeed));
+        CoCake = StartCoroutine(CoCollideCake());
     }
 
-    private IEnumerator CoCollideCake(float initialSpeed)
+    private IEnumerator CoCollideCake()
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        vehicleController.itemAccelerationMultiplier = initialSpeed;
+        vehicleController.itemAccelerationMultiplier = 1f;
         enableItem();
         gameObject.SetActive(false);
     }
@@ -147,6 +147,25 @@ public class ItemContactController : MonoBehaviour
     {
         yield return new WaitForSeconds(itemSO.durationTime);
         vehicleController.itemAccelerationMultiplier = 1f;
+        enableItem();
+        gameObject.SetActive(false);
+    }
+
+    // 일정 시간동안 반전
+    private void CollideMushroom()
+    {
+        ItemManager.Instance.mushroomEffect.SetActive(true);
+        vehicleController.carSpeed = 0f;
+        vehicleController.isMushroom = true;
+        if (CoMushroom != null) StopCoroutine(CoMushroom);
+        CoMushroom = StartCoroutine(CoCollideMushroom());
+    }
+
+    private IEnumerator CoCollideMushroom()
+    {
+        yield return new WaitForSeconds(itemSO.durationTime);
+        ItemManager.Instance.mushroomEffect.SetActive(false);
+        vehicleController.isMushroom = false;
         enableItem();
         gameObject.SetActive(false);
     }

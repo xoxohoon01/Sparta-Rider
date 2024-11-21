@@ -65,6 +65,9 @@ public class VehicleController : MonoBehaviour
     public bool isBanana;
     public float totalRotate;
 
+    // 머쉬룸 적용
+    public bool isMushroom;
+
     private void Start()
     {
         carRigidbody = GetComponent<Rigidbody>(); // 리지드바디 초기화
@@ -206,7 +209,14 @@ public class VehicleController : MonoBehaviour
 
     public void OnAccel(InputValue value)
     {
-        throttleInputAxis = value.Get<float>();
+        if (isMushroom)
+        {
+            throttleInputAxis = -value.Get<float>();
+        }
+        else
+        {
+            throttleInputAxis = value.Get<float>();
+        }
     }
 
     private void AccelerateCar()

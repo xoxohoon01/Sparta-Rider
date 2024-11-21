@@ -290,12 +290,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: 1dd7afc6ad97c0547b659499b775a89d, type: 2}
-  accelerationMultiplier: 6
-  maxSpeed: 200
-  maxSteeringAngle: 90
-  steeringSpeed: 3
-  decelerationMultiplier: 0.01
-  handbrakeDriftMultiplier: 2
+  trackLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  itemAccelerationMultiplier: 1
+  itemSteeringMultiplier: 1
+  itemDriftMultiplier: 1
   frontLeftMesh: {fileID: 8651445213024598189}
   frontRightMesh: {fileID: 1985501014077504080}
   rearLeftMesh: {fileID: 4495488044208205458}
@@ -308,6 +308,9 @@ MonoBehaviour:
   throttleAxis: 0
   steeringAxis: 0
   driftingAxis: 0
+  itemSO: {fileID: 0}
+  isBanana: 0
+  totalRotate: 0
 --- !u!114 &1470578844254670
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -75,6 +75,8 @@ public class PrefabSpawner : MonoBehaviour
     {
         if (currentPrefab != null && context.performed)
         {
+            // 이름 뒤에 Clone 제거
+            currentPrefab.name = currentPrefab.name.Replace("(Clone)", "").Trim();
             placedPrefab.Push(currentPrefab);
             currentPrefab = null;
         }
@@ -109,7 +111,6 @@ public class PrefabSpawner : MonoBehaviour
 
     public void OnConfirm()
     {
-        // TODO : 맵 저장
         UIConfirm.SetActive(true);
     }
 

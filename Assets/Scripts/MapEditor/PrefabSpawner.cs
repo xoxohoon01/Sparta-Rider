@@ -15,6 +15,8 @@ public class PrefabSpawner : MonoBehaviour
 
     public Stack<GameObject> placedPrefab = new Stack<GameObject>();
 
+    private float height = 0.5001f;
+
     private void Awake()
     {
         mainCam = Camera.main;
@@ -57,7 +59,7 @@ public class PrefabSpawner : MonoBehaviour
             if (currentPrefab.layer == LayerMask.NameToLayer("Track"))
             {
                 float colliderHeight = hit.collider.bounds.size.y;
-                targetPosition = hit.transform.position + colliderHeight * new Vector3(0, 0.5001f, 0);
+                targetPosition = hit.transform.position + colliderHeight * new Vector3(0, height, 0);
             }
             else
             {

@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class ItemSpawnPoint : MonoBehaviour
 {
     private WaitForSeconds waitForSeconds = new WaitForSeconds(5f);
-    private BoxCollider currentCollider;
 
     public GameObject item;
     public ItemGenerator generator;
@@ -14,7 +13,6 @@ public class ItemSpawnPoint : MonoBehaviour
     private void Awake()
     {
         generator = GetComponent<ItemGenerator>();
-        currentCollider = GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -36,7 +34,6 @@ public class ItemSpawnPoint : MonoBehaviour
 
     public void ResetItem()
     {
-        Destroy(item);
         StartCoroutine(CoGenerator());
     }
 

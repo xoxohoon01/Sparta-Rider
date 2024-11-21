@@ -54,7 +54,7 @@ public class ItemContactController : MonoBehaviour
             SetVehicleController(collision.gameObject.GetComponent<VehicleController>());
             switch (itemSO.itemName)
             {
-                case ItemName.Banana: CollideBanana(vehicleController.itemAccelerationMultiplier); break;
+                case ItemName.Banana: CollideBanana(); break;
                 case ItemName.Tomato: CollideTomato(); break;
                 case ItemName.Coffee: CollideCoffee(vehicleController.itemAccelerationMultiplier); break;
                 case ItemName.Cake: CollideCake(vehicleController.itemAccelerationMultiplier); break;
@@ -64,18 +64,18 @@ public class ItemContactController : MonoBehaviour
     }
 
     // 바나나 밟을 때
-    private void CollideBanana(float initialSpeed)
+    private void CollideBanana()
     {
         vehicleController.isBanana = true;
         vehicleController.itemAccelerationMultiplier = 0f;
-        StartCoroutine(CoCollideBanana(initialSpeed));
+        StartCoroutine(CoCollideBanana());
     }
 
-    private IEnumerator CoCollideBanana(float initialSpeed)
+    private IEnumerator CoCollideBanana()
     {
         yield return new WaitForSeconds(itemSO.durationTime);
         vehicleController.isBanana = false;
-        vehicleController.itemAccelerationMultiplier = initialSpeed;
+        vehicleController.itemAccelerationMultiplier = 1f;
         enableItem();
         gameObject.SetActive(false);
     }
@@ -127,6 +127,7 @@ public class ItemContactController : MonoBehaviour
     private void CollideWatermelon(float initialSpeed)
     {
         vehicleController.itemAccelerationMultiplier = 0f;
+        StartCoroutine(CoCollideWatermelon(initialSpeed));
     }
 
     private IEnumerator CoCollideWatermelon(float initialSpeed)

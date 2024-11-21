@@ -169,7 +169,7 @@ public class VehicleController : MonoBehaviour
             // 더 돌지 않도록 제한
             if (totalRotate >= targetRotation)
             {
-                deltaRotation = Mathf.Min(totalRotate, targetRotation);
+                deltaRotation = targetRotation;
                 isBanana = false;
                 totalRotate = 0f;
             }

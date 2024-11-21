@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - DefaultSpawn
   - MidPoint
+  - MapEditor
   layers:
   - Default
   - TransparentFX

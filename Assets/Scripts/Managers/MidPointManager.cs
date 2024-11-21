@@ -21,9 +21,6 @@ public class MidPointManager : DestroySingleton<MidPointManager>
     {
         base.Awake();
 
-        // 멈춘 시간 초기화
-        Time.timeScale = 1.0f;
-
         // bestLapTime, isClear 초기화
         bestLapTime = float.MaxValue;
         isClear = false;

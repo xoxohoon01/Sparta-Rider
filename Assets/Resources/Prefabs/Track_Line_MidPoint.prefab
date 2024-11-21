@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 111723148707177908}
   - component: {fileID: 2410541706049256173}
   - component: {fileID: 2297608010882147485}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Fence_Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 2242099653459151425}
   - component: {fileID: 7915037234667339273}
   - component: {fileID: 1690803431650772974}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Fence_Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7276925260861940167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Track_Line_MidPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

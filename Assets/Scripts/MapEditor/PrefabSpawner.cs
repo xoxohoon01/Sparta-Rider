@@ -11,11 +11,14 @@ public class PrefabSpawner : MonoBehaviour
     private GameObject prefab;
     private GameObject currentPrefab;  // 생성된 프리팹을 저장할 변수
 
-    private Stack<GameObject> placedPrefab = new Stack<GameObject>();
+    [SerializeField] private GameObject UIConfirm;
+
+    public Stack<GameObject> placedPrefab = new Stack<GameObject>();
 
     private void Awake()
     {
         mainCam = Camera.main;
+        UIConfirm.SetActive(false);
     }
 
     // 버튼 클릭 시 호출되는 메소드
@@ -102,5 +105,16 @@ public class PrefabSpawner : MonoBehaviour
             GameObject prefab = placedPrefab.Pop();
             Destroy(prefab);
         }
+    }
+
+    public void OnConfirm()
+    {
+        // TODO : 맵 저장
+        UIConfirm.SetActive(true);
+    }
+
+    public void OnDelete()
+    {
+        MySceneManager.Instance.ChangeScene(SceneType.StartScene);
     }
 }

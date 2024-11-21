@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
+using System;
 using UnityEngine;
 
 public class ItemGenerator : MonoBehaviour
@@ -8,10 +6,15 @@ public class ItemGenerator : MonoBehaviour
     // ItemControl이랑 같은지 확인용
     public GameObject generatorItem;
     public ItemSO generatorItemSo;
+    private int itemNameCount;
+    private void Start()
+    {
+        itemNameCount = Enum.GetValues(typeof(ItemName)).Length;
+    }
 
     public void Generate(GameObject obj)
     {
-        ItemName _name = (ItemName)Random.Range(0, (int)ItemName.Count);
+        ItemName _name = (ItemName)UnityEngine.Random.Range(0, itemNameCount);
         Pool _pool = ItemManager.Instance.itemObjectPool.SpawnFromPool(_name);
 
         generatorItem = _pool.item;
@@ -24,7 +27,7 @@ public class ItemGenerator : MonoBehaviour
 
     public Pool Generate()
     {
-        ItemName _name = (ItemName)Random.Range(0, (int)ItemName.Count);
+        ItemName _name = (ItemName)UnityEngine.Random.Range(0, itemNameCount);
         Pool _pool = ItemManager.Instance.itemObjectPool.SpawnFromPool(_name);
 
         generatorItem = _pool.item;

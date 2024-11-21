@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4968744146510496596}
   - component: {fileID: 2469135919363796538}
   - component: {fileID: 4571625275985943982}
-  - component: {fileID: -3669385789976720717}
+  - component: {fileID: 5732853842649975518}
   - component: {fileID: 8196786675539482721}
   m_Layer: 10
   m_Name: NonBoxWatermelon
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.29415518, y: 0.3630672, z: 0.3092926}
   m_Center: {x: 0.000002734363, y: -0.010130875, z: 0.0000018104911}
---- !u!54 &-3669385789976720717
+--- !u!54 &5732853842649975518
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

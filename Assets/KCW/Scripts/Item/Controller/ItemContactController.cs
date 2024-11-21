@@ -9,6 +9,12 @@ public class ItemContactController : MonoBehaviour
 
     private VehicleController vehicleController;
 
+    private Coroutine CoBanana;
+    private Coroutine CoTomato;
+    private Coroutine CoCoffee;
+    private Coroutine CoCake;
+    private Coroutine CoWatermelon;
+
     private void Awake()
     {
         ren = GetComponent<Renderer>();
@@ -31,7 +37,7 @@ public class ItemContactController : MonoBehaviour
     private void enableItem()
     {
         ren.enabled = true;
-        ren.enabled = true;
+        col.enabled = true;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -52,13 +58,14 @@ public class ItemContactController : MonoBehaviour
 
             disableItem();
             SetVehicleController(collision.gameObject.GetComponent<VehicleController>());
+            float _initialSpeed = vehicleController.itemAccelerationMultiplier;
             switch (itemSO.itemName)
             {
                 case ItemName.Banana: CollideBanana(); break;
                 case ItemName.Tomato: CollideTomato(); break;
-                case ItemName.Coffee: CollideCoffee(vehicleController.itemAccelerationMultiplier); break;
-                case ItemName.Cake: CollideCake(vehicleController.itemAccelerationMultiplier); break;
-                case ItemName.Watermelon: CollideWatermelon(vehicleController.itemAccelerationMultiplier); break;
+                case ItemName.Coffee: CollideCoffee(_initialSpeed); break;
+                case ItemName.Cake: CollideCake(_initialSpeed); break;
+                case ItemName.Watermelon: CollideWatermelon(); break;
             }
         }
     }
@@ -68,7 +75,8 @@ public class ItemContactController : MonoBehaviour
     {
         vehicleController.isBanana = true;
         vehicleController.itemAccelerationMultiplier = 0f;
-        StartCoroutine(CoCollideBanana());
+        if (CoBanana != null) StopCoroutine(CoBanana);
+        CoBanana = StartCoroutine(CoCollideBanana());
     }
 
     private IEnumerator CoCollideBanana()
@@ -85,7 +93,8 @@ public class ItemContactController : MonoBehaviour
     {
         GameObject _effect = ItemManager.Instance.tomatoEffect;
         _effect.SetActive(true);
-        StartCoroutine(CoCollideTomato(_effect));
+        if (CoTomato != null) StopCoroutine(CoTomato);
+        CoTomato = StartCoroutine(CoCollideTomato(_effect));
     }
 
     private IEnumerator CoCollideTomato(GameObject image)
@@ -100,19 +109,22 @@ public class ItemContactController : MonoBehaviour
     private void CollideCoffee(float initialSpeed)
     {
         vehicleController.itemAccelerationMultiplier *= 2f;
-        StartCoroutine(CoCollideCoffee(initialSpeed));
+        if(CoCoffee != null) StopCoroutine(CoCoffee);
+        CoCoffee = StartCoroutine(CoCollideCoffee(initialSpeed));
     }
 
     private IEnumerator CoCollideCoffee(float initialSpeed)
     {
         yield return new WaitForSeconds(itemSO.durationTime);
         vehicleController.itemAccelerationMultiplier = initialSpeed;
+        gameObject.SetActive(false);
     }
 
     private void CollideCake(float initialSpeed)
     {
         vehicleController.itemAccelerationMultiplier *= 0.5f;
-        StartCoroutine(CoCollideCake(initialSpeed));
+        if(CoCake != null) StopCoroutine(CoCake);
+        CoCake = StartCoroutine(CoCollideCake(initialSpeed));
     }
 
     private IEnumerator CoCollideCake(float initialSpeed)
@@ -124,16 +136,17 @@ public class ItemContactController : MonoBehaviour
     }
 
     // 수박 맞으면 정해진 시간동안 멈춤
-    private void CollideWatermelon(float initialSpeed)
+    private void CollideWatermelon()
     {
         vehicleController.itemAccelerationMultiplier = 0f;
-        StartCoroutine(CoCollideWatermelon(initialSpeed));
+        if(CoWatermelon != null) StopCoroutine(CoWatermelon);
+        CoWatermelon = StartCoroutine(CoCollideWatermelon());
     }
 
-    private IEnumerator CoCollideWatermelon(float initialSpeed)
+    private IEnumerator CoCollideWatermelon()
     {
         yield return new WaitForSeconds(itemSO.durationTime);
-        vehicleController.itemAccelerationMultiplier = initialSpeed;
+        vehicleController.itemAccelerationMultiplier = 1f;
         enableItem();
         gameObject.SetActive(false);
     }

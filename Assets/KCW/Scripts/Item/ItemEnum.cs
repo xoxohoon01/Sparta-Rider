@@ -5,7 +5,6 @@ public enum ItemName
     Coffee, // 부스터
     Cake, // 느려짐
     Watermelon, // 멈춤
-    Count // Type 개수
 }
 
 public enum ItemType

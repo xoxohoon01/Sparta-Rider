@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8454416206727096739}
   - component: {fileID: 8764754277029212440}
   - component: {fileID: 2061856414238119549}
-  - component: {fileID: -2032304450487561019}
+  - component: {fileID: 9017811161629421243}
   - component: {fileID: -4791366327482341514}
   m_Layer: 10
   m_Name: NonBoxCoffee
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12081248, y: 0.152305, z: 0.12081248}
   m_Center: {x: 0, y: 0.07999416, z: 0}
---- !u!54 &-2032304450487561019
+--- !u!54 &9017811161629421243
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

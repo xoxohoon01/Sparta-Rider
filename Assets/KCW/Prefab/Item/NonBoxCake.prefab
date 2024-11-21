@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3506603667673768125}
   - component: {fileID: 4715564567744122133}
   - component: {fileID: 14590301536259710}
-  - component: {fileID: -1664725500482551123}
+  - component: {fileID: -8534039509961430023}
   - component: {fileID: 8977654331682923537}
   m_Layer: 10
   m_Name: NonBoxCake
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12271368, y: 0.12232481, z: 0.12651125}
   m_Center: {x: 0, y: 0.061162405, z: 0}
---- !u!54 &-1664725500482551123
+--- !u!54 &-8534039509961430023
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

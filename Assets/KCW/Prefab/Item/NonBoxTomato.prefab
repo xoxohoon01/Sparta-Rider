@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1079940295370840097}
   - component: {fileID: 4105515160740168034}
   - component: {fileID: 922720069547609131}
-  - component: {fileID: 6060694875616254221}
+  - component: {fileID: -6490646063579922943}
   - component: {fileID: -2193058882840954635}
   m_Layer: 10
   m_Name: NonBoxTomato
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.10615571, y: 0.1074813, z: 0.10749187}
   m_Center: {x: 0.00059085153, y: -0.0011803154, z: -0.00008767098}
---- !u!54 &6060694875616254221
+--- !u!54 &-6490646063579922943
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

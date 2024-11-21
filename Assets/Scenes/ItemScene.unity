@@ -1241,7 +1241,6 @@ MonoBehaviour:
   speedText: {fileID: 4040467054070694627}
   currentLapTimeText: {fileID: 6105378420289227911}
   bestLapTimeText: {fileID: 7493433241921109037}
-  item: {fileID: 8040028141740293552}
   GameOverUI: {fileID: 2542572288442194638}
   itemImages:
   - {fileID: 21300000, guid: 6681e2769267ac346be3ac2ae5368170, type: 3}

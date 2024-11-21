@@ -209,7 +209,14 @@ public class VehicleController : MonoBehaviour
 
     public void OnAccel(InputValue value)
     {
-        throttleInputAxis = value.Get<float>();
+        if (isMushroom)
+        {
+            throttleInputAxis = -value.Get<float>();
+        }
+        else
+        {
+            throttleInputAxis = value.Get<float>();
+        }
     }
 
     private void AccelerateCar()

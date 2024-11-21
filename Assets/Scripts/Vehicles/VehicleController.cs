@@ -104,6 +104,8 @@ public class VehicleController : MonoBehaviour
         RRwheelFriction.stiffness = rearRightCollider.sidewaysFriction.stiffness;
         #endregion
 
+        carRigidbody.centerOfMass = transform.position;
+
         // 차체 성능 초기화
         carRigidbody.mass = status.mass;
         maxSpeed = status.maxSpeed;

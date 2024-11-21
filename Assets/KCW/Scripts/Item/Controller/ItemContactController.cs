@@ -44,6 +44,12 @@ public class ItemContactController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player") ||
             collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
+            if(gameObject.transform.parent != null)
+            {
+                ItemSpawnPoint _point = GetComponentInParent<ItemSpawnPoint>();
+                _point.ResetItem();
+            }
+
             disableItem();
             SetVehicleController(collision.gameObject.GetComponent<VehicleController>());
             switch (itemSO.itemName)

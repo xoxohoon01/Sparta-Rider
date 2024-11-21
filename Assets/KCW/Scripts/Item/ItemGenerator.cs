@@ -21,4 +21,15 @@ public class ItemGenerator : MonoBehaviour
         ItemController _itemControl = obj.GetComponent<ItemController>();
         _itemControl.GetItemPool(_pool);
     }
+
+    public Pool Generate()
+    {
+        ItemName _name = (ItemName)Random.Range(0, (int)ItemName.Count);
+        Pool _pool = ItemManager.Instance.itemObjectPool.SpawnFromPool(_name);
+
+        generatorItem = _pool.item;
+        generatorItemSo = _pool.itemSO;
+
+        return _pool;
+    }
 }

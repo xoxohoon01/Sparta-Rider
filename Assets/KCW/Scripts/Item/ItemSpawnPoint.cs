@@ -17,7 +17,8 @@ public class ItemSpawnPoint : MonoBehaviour
 
     private void Start()
     {
-        SetItem();
+        if(GameManager.Instance.gameMode == 1)
+            SetItem();
     }
 
     private void SetItem()

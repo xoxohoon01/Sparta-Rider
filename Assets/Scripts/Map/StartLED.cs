@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartLED : MonoBehaviour
 {
@@ -18,9 +19,12 @@ public class StartLED : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<VehicleController>();
-        original = player.itemAccelerationMultiplier;
-        StartCoroutine(CoLights());
+        if (SceneManager.GetActiveScene().name != "MapEditorScene")
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<VehicleController>();
+            original = player.itemAccelerationMultiplier;
+            StartCoroutine(CoLights());
+        }
     }
 
     public IEnumerator CoLights()

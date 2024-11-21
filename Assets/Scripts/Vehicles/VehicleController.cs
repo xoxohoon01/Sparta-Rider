@@ -1,11 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-using UnityEngine.Windows;
-using static UnityEditor.Progress;
 
 public class VehicleController : MonoBehaviour
 {
@@ -16,6 +15,10 @@ public class VehicleController : MonoBehaviour
     private float steeringSpeed;                 // 조향 속도
     private float decelerationMultiplier;        // 감속 계수
     private float handbrakeDriftMultiplier;      // 드리프트 계수
+
+    private float groundMaxSpeed = 40f;    // 땅에 닿을 시 최대속도
+    public LayerMask trackLayer;
+    private bool isGround;
 
     public float itemAccelerationMultiplier = 1f;
     public float itemSteeringMultiplier = 1f;
@@ -118,6 +121,8 @@ public class VehicleController : MonoBehaviour
         localVelocityX = transform.InverseTransformDirection(carRigidbody.velocity).x;
         localVelocityZ = transform.InverseTransformDirection(carRigidbody.velocity).z;
 
+        CheckGround();
+
         // 전진, 후진 관련
         if (throttleInputAxis != 0)
         {
@@ -167,30 +172,76 @@ public class VehicleController : MonoBehaviour
         }
     }
 
+    private void CheckGround()
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hit, 3, trackLayer);
+        if (hit.collider != null)
+        {
+            isGround = false;
+        }
+        else
+        {
+            isGround = true;
+        }
+    }
+
     public void OnAccel(InputValue value)
     {
         throttleInputAxis = value.Get<float>();
     }
     private void AccelerateCar()
     {
-        if (Mathf.Abs(Mathf.RoundToInt(carSpeed)) < maxSpeed)
+        // 땅 밟을 시 느려짐
+        if (isGround)
         {
-            throttleAxis = Mathf.Min(throttleAxis + Time.deltaTime, 1);
-            frontLeftCollider.brakeTorque = 0;
-            frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
-            frontRightCollider.brakeTorque = 0;
-            frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
-            rearLeftCollider.brakeTorque = 0;
-            rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
-            rearRightCollider.brakeTorque = 0;
-            rearRightCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
+            // 최대속도까지는 정상 가속
+            if (Mathf.Abs(Mathf.RoundToInt(carSpeed)) < groundMaxSpeed)
+            {
+                throttleAxis = Mathf.Min(throttleAxis + Time.deltaTime, 1);
+                frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
+                frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
+                rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
+                rearRightCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
+                frontLeftCollider.brakeTorque = 0;
+                frontRightCollider.brakeTorque = 0;
+                rearLeftCollider.brakeTorque = 0;
+                rearRightCollider.brakeTorque = 0;
+            }
+            // 최대속도보다 빠를 경우 브레이크
+            else
+            {
+                frontLeftCollider.motorTorque = 0;
+                frontRightCollider.motorTorque = 0;
+                rearLeftCollider.motorTorque = 0;
+                rearRightCollider.motorTorque = 0;
+                frontLeftCollider.brakeTorque = 600f;
+                frontRightCollider.brakeTorque = 600f;
+                rearLeftCollider.brakeTorque = 600f;
+                rearRightCollider.brakeTorque = 600f;
+            }
         }
         else
         {
-            frontLeftCollider.brakeTorque = 0;
-            frontRightCollider.brakeTorque = 0;
-            rearLeftCollider.brakeTorque = 0;
-            rearRightCollider.brakeTorque = 0;
+            if (Mathf.Abs(Mathf.RoundToInt(carSpeed)) < maxSpeed)
+            {
+                throttleAxis = Mathf.Min(throttleAxis + Time.deltaTime, 1);
+                frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
+                frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
+                rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
+                rearRightCollider.motorTorque = (accelerationMultiplier * 50f) * itemAccelerationMultiplier * throttleAxis * throttleInputAxis;
+                frontLeftCollider.brakeTorque = 0;
+                frontRightCollider.brakeTorque = 0;
+                rearLeftCollider.brakeTorque = 0;
+                rearRightCollider.brakeTorque = 0;
+            }
+            else
+            {
+                frontLeftCollider.brakeTorque = 0;
+                frontRightCollider.brakeTorque = 0;
+                rearLeftCollider.brakeTorque = 0;
+                rearRightCollider.brakeTorque = 0;
+            }
         }
     }
     private void ThrottleOff()
@@ -393,5 +444,9 @@ public class VehicleController : MonoBehaviour
             rearRightCollider.sidewaysFriction = RRwheelFriction;
         }
 
+    }
+
+    private void OnDrawGizmos()
+    {
     }
 }

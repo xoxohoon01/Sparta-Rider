@@ -522,6 +522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startBGM: {fileID: 8300000, guid: b90b002a8cd137243a4b5e955f3b220f, type: 3}
   inGameBGM: {fileID: 8300000, guid: 0869bcc8afadcbd4182169d7dc3e6484, type: 3}
+  accelSound: {fileID: 8300000, guid: 771ce407ce807b74885ec23ebd1e6647, type: 3}
+  driftSound: {fileID: 8300000, guid: f632e2ace80a32e47a2c531f64901a50, type: 3}
 --- !u!4 &409497697
 Transform:
   m_ObjectHideFlags: 0

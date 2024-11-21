@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: 961d066df689ef04cba56bbba047546f, type: 2}
+  centerOfMass: {x: 0, y: 0.5, z: 0}
   trackLayer:
     serializedVersion: 2
     m_Bits: 256

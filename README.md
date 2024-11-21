@@ -22,7 +22,10 @@
 ![77E4DFE7-2DAB-40F1-A306-EF635C39B758](https://github.com/user-attachments/assets/7d1ae2a0-bc6d-41f3-bc69-79c84f5b3c82)
 
 ## 주요기능
-
+- ###게임 엔진
+  - Unity - 2022.3.17f1
+- ####버전 관리
+  - GitHub
 
 ## 기술 스택
 

@@ -9,6 +9,8 @@ using UnityEngine.UIElements;
 public class VehicleController : MonoBehaviour
 {
     public VehicleStatus status;
+    public Vector3 centerOfMass;
+
     private float accelerationMultiplier;        // 가속도 계수
     private float maxSpeed;                      // 최대속도
     private float maxSteeringAngle;              // 조향 계수
@@ -56,6 +58,7 @@ public class VehicleController : MonoBehaviour
     float throttleInputAxis;        // W, S 누를 시 리턴 값 (-1, 0, 1)
     float steeringInputAxis;        // A, D 누를 시 리턴 값 (-1, 0, 1)
     bool isBrake;
+    bool isDrift;
 
     // 바나나 회전용
     public ItemSO itemSO;
@@ -107,7 +110,7 @@ public class VehicleController : MonoBehaviour
         RRwheelFriction.stiffness = rearRightCollider.sidewaysFriction.stiffness;
         #endregion
 
-        carRigidbody.centerOfMass = transform.position;
+        carRigidbody.centerOfMass = centerOfMass;
 
         // 차체 성능 초기화
         carRigidbody.mass = status.mass;
@@ -208,6 +211,7 @@ public class VehicleController : MonoBehaviour
     {
         throttleInputAxis = value.Get<float>();
     }
+
     private void AccelerateCar()
     {
         // 땅 밟을 시 느려짐
@@ -380,7 +384,7 @@ public class VehicleController : MonoBehaviour
             driftingAxis = 0f;
         }
 
-        // 현재 마찰력 계수가 
+        // 마찰력 회복중인 경우
         if (FLwheelFriction.extremumSlip > FLWextremumSlip)
         {
             FLwheelFriction.extremumSlip = FLWextremumSlip * handbrakeDriftMultiplier * driftingAxis;
@@ -398,6 +402,8 @@ public class VehicleController : MonoBehaviour
             Invoke("RecoverTraction", Time.deltaTime);
 
         }
+
+        //마찰력 회복 완료시
         else if (FLwheelFriction.extremumSlip < FLWextremumSlip)
         {
             FLwheelFriction.extremumSlip = FLWextremumSlip;
@@ -413,6 +419,7 @@ public class VehicleController : MonoBehaviour
             rearRightCollider.sidewaysFriction = RRwheelFriction;
 
             driftingAxis = 0f;
+            isDrift = false;
         }
     }
 
@@ -461,10 +468,6 @@ public class VehicleController : MonoBehaviour
             RRwheelFriction.extremumSlip = RRWextremumSlip * handbrakeDriftMultiplier * driftingAxis;
             rearRightCollider.sidewaysFriction = RRwheelFriction;
         }
-
     }
 
-    private void OnDrawGizmos()
-    {
-    }
 }

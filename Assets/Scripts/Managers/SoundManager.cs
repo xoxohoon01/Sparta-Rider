@@ -7,6 +7,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     private AudioSource audioSource;
     [SerializeField] private AudioClip startBGM;
     [SerializeField] private AudioClip inGameBGM;
+    public AudioClip accelSound;
+    public AudioClip driftSound;
 
     protected override void Awake()
     {

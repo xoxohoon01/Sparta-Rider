@@ -5,7 +5,7 @@ using System;
 using System.IO;
 
 [Serializable]
-public class MapData : ScriptableObject
+public class MapData
 {
     public string mapName;
     public List<Data> data;

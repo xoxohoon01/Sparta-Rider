@@ -186,6 +186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: 737627221841b4ad9bb162907dc7e50e, type: 2}
+  trackLayer:
+    serializedVersion: 2
+    m_Bits: 256
   itemAccelerationMultiplier: 1
   itemSteeringMultiplier: 1
   itemDriftMultiplier: 1
@@ -203,7 +206,7 @@ MonoBehaviour:
   driftingAxis: 0
   itemSO: {fileID: 0}
   isBanana: 0
-  rotateY: 0
+  totalRotate: 0
 --- !u!114 &6274036453855741173
 MonoBehaviour:
   m_ObjectHideFlags: 0

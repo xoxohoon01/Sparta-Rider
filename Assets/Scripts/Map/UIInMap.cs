@@ -10,7 +10,6 @@ public class UIInMap : MonoBehaviour
     [SerializeField] private TextMeshProUGUI speedText;
     [SerializeField] private TextMeshProUGUI currentLapTimeText;
     [SerializeField] private TextMeshProUGUI bestLapTimeText;
-    [SerializeField] private Image item;
     [SerializeField] private GameObject GameOverUI;
 
     [SerializeField] Sprite[] itemImages;
@@ -53,23 +52,10 @@ public class UIInMap : MonoBehaviour
         }
         bestLapTimeText.text = $"Best Lap\n{bestLapTimeString}";
 
-        // 보유중인 아이템 이미지
-        if (itemController.item != null)
+        // 게임 클리어 시
+        if(MidPointManager.Instance.isClear)
         {
-            // TODO : itemImage 바꾸기
-            string itemName = itemController.itemSO.itemName.ToString();
-
-            foreach (Sprite itemImage in itemImages)
-            {
-                if (itemName == itemImage.name)
-                {
-                    item.sprite = itemImage; break;
-                }
-            }
-        }
-        else
-        {
-            item.sprite = null;
+            GameOverUI.SetActive(true);
         }
     }
 

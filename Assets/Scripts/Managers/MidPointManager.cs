@@ -95,8 +95,6 @@ public class MidPointManager : DestroySingleton<MidPointManager>
 
     private void OnRaceFinished()
     {
-        // 레이스가 끝났을 때의 처리 로직
-        Debug.Log("Race Ended!");
         // TODO : 게임 결과 UI 표시, 플레이어 제어 비활성화
         isClear = true;
         Time.timeScale = 0f;

@@ -18,7 +18,8 @@ public class MapInit : MonoBehaviour
         {
             for (int j = 0; j < mapSize; j++)
             {
-                Instantiate(mapPrefab, new Vector3((mapSize/2 - j) * pixelScale, -0.5001f, (mapSize/2 - i) * pixelScale), Quaternion.identity, map.transform);
+                Vector3 position = new Vector3((mapSize / 2 - j) * pixelScale, -0.5001f, (mapSize / 2 - i) * pixelScale);
+                Instantiate(mapPrefab, position, Quaternion.identity, map.transform);
             }
         }
     }

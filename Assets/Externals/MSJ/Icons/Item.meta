@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Externals/MSJ/Icons/Item.meta
+guid: 7742d63dc76f90049a3a73247f4d46fb
+folderAsset: yes
+DefaultImporter:
+========
+guid: 24a1c2963b2497d4e968d7cd48472b49
+NativeFormatImporter:
+>>>>>>>> dev:Assets/ScriptableObjects/Vehicles/Basic.asset.meta
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

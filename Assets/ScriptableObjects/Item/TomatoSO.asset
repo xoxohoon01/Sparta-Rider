@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06ac2fab40403d342a10d4284b27bc00, type: 3}
-  m_Name: CakeSO
+  m_Name: TomatoSO
   m_EditorClassIdentifier: 
-  itemName: 3
-  itemType: 1
+  itemName: 1
+  itemType: 0
   durationTime: 3
-  speed: 0
+  rotationNum: 0
+  speed: 30

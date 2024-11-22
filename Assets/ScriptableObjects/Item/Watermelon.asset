@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06ac2fab40403d342a10d4284b27bc00, type: 3}
-  m_Name: CoffeeSO
+  m_Name: Watermelon
   m_EditorClassIdentifier: 
-  itemName: 2
-  itemType: 2
-  durationTime: 5
-  speed: 0
+  itemName: 4
+  itemType: 0
+  durationTime: 3
+  rotationNum: 0
+  speed: 30

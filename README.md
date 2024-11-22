@@ -60,8 +60,6 @@
 ![77E4DFE7-2DAB-40F1-A306-EF635C39B758](https://github.com/user-attachments/assets/7d1ae2a0-bc6d-41f3-bc69-79c84f5b3c82)
 
 ## 주요기능
-|기능 이름|기능 설명|스크립트|메서드|
-|:---:|:---:|:---:|:---:|
 ### class VehicleController
 
 

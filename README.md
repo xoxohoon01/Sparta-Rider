@@ -63,7 +63,7 @@
 |기능 이름|기능 설명|스크립트|
 |:---:|:---:|:---:|
 |자동차 움직임|- VehicleController라는 스크립트에서 차량의 움직임을 제어 - Update 에서 전진, 후진, 스티어링, 드리프트 등의 기능 구현 - Input System을 통해 InputValue를 받아와, 상태를 변경|https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Vehicles/VehicleController.cs
-|UI 동적 로딩 |동적으로 UI를 생성하려면 프리팹으로 준비한 뒤, Instantiate를 사용해 필요한 위치에 추가해주면 된다.|https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/UI/UICreateMap.cs|
+|UI 동적 로딩 |동적으로 UI를 생성하려면 프리팹으로 준비한 뒤, Instantiate를 사용해 필요한 위치에 추가해주면 된다.|https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/UI/UICreateMap.cs
 |아이템생성|현재 자식 객체가 있다면 객체를 지운다. ObjectPool에서 아이템을 가져온다. 현재 Point에 자식 객체로 설정한다|https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Item/ItemSpawnPoint.cs
 |아이템효과|아이템에 충돌이 발생할 때 Randerer 및 Collider를 비활성 시킵니다. 아이템 효과를 발동시킵니다.|https://github.com/xoxohoon01/Sparta Rider/blob/dev/Assets/Scripts/Item/Controller/ItemContactController.cs
 |맵  - 골인 지점, 중간 포인트|골인지점 - 중간 포인트를 거쳤는지 HashSet로 검사. 모든 중간 포인트를 지났다면 골인 지점을 통과했을 때 Lap++ 스폰포인트 - 마지막으로 거친 중간 포인트 or 골인 지점이 스폰 포인트가 된다.|https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Managers/MidPointManager.cs

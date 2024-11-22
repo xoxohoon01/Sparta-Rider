@@ -23,6 +23,7 @@ public class GameManager : MonoSingleton<GameManager>
     public int mapNumber;
     public CarType carNumber;
     public int gameMode;        //0 = 스피드전, 1 = 아이템전
+    public string userMapName;
     
     public void LoadScene(SceneType sceneType)
     {

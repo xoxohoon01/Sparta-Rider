@@ -62,7 +62,7 @@
 ## 주요기능
 |기능 이름|기능 설명|스크립트|
 |:---:|:---:|:---:|
-|자동차 움직임|- VehicleController라는 스크립트에서 차량의 움직임을 제어 - Update 에서 전진, 후진, 스티어링, 드리프트 등의 기능 구현 - Input System을 통해 InputValue를 받아와, 상태를 변경|[VehicleController.cs]  (https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Vehicles/VehicleController.cs)|
+|자동차 움직임|- VehicleController라는 스크립트에서 차량의 움직임을 제어 - Update 에서 전진, 후진, 스티어링, 드리프트 등의 기능 구현 - Input System을 통해 InputValue를 받아와, 상태를 변경|[VehicleController.cs] (https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Vehicles/VehicleController.cs)
 |UI 동적 로딩 |동적으로 UI를 생성하려면 프리팹으로 준비한 뒤, Instantiate를 사용해 필요한 위치에 추가해주면 된다.|[UICreateMap.cs](https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/UI/UICreateMap.cs)|
 |아이템생성|현재 자식 객체가 있다면 객체를 지운다. ObjectPool에서 아이템을 가져온다. 현재 Point에 자식 객체로 설정한다|[ItemSpawnPoint.cs](https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Item/ItemSpawnPoint.cs)|
 |아이템효과|아이템에 충돌이 발생할 때 Randerer 및 Collider를 비활성 시킵니다. 아이템 효과를 발동시킵니다.|[ItemContactController.cs](https://github.com/xoxohoon01/SpartaRider/blob/dev/Assets/Scripts/Item/Controller/ItemContactController.cs)

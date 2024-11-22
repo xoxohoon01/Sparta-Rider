@@ -6,7 +6,7 @@ public class ItemManager : DestroySingleton<ItemManager>
 {
     public ItemObjectPool itemObjectPool;
     public GameObject tomatoEffect;
-
+    public GameObject mushroomEffect;
     protected override void Awake()
     {
         base.Awake();

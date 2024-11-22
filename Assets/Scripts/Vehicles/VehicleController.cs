@@ -11,6 +11,9 @@ public class VehicleController : MonoBehaviour
     public VehicleStatus status;
     public Vector3 centerOfMass;
 
+    public AudioSource engineAudioSource;
+    public AudioSource driftAudioSource;
+
     private float accelerationMultiplier;        // 가속도 계수
     private float maxSpeed;                      // 최대속도
     private float maxSteeringAngle;              // 조향 계수
@@ -64,6 +67,9 @@ public class VehicleController : MonoBehaviour
     public ItemSO itemSO;
     public bool isBanana;
     public float totalRotate;
+
+    // 머쉬룸 적용
+    public bool isMushroom;
 
     private void Start()
     {
@@ -128,12 +134,26 @@ public class VehicleController : MonoBehaviour
 
         CheckGround();
 
+        // 엔진소리
+        if (carRigidbody.velocity.magnitude > 0.5f)
+        {
+            if (!engineAudioSource.isPlaying)
+            {
+                engineAudioSource.Play();
+            }
+        }
+        else
+        {
+            engineAudioSource.Stop();
+        }
+
         // 전진, 후진 관련
         if (throttleInputAxis != 0)
         {
             CancelInvoke("DecelerateCar");
             decelerationCar = false;
             AccelerateCar();
+            
         }
         if (throttleInputAxis == 0)
         {
@@ -155,6 +175,14 @@ public class VehicleController : MonoBehaviour
         {
             CancelInvoke("DecelerateCar");
             Handbrake();
+            if (!driftAudioSource.isPlaying)
+            {
+                driftAudioSource.Play();
+            }
+        }
+        else
+        {
+            driftAudioSource.Stop();
         }
 
         // 감속 관련
@@ -206,7 +234,14 @@ public class VehicleController : MonoBehaviour
 
     public void OnAccel(InputValue value)
     {
-        throttleInputAxis = value.Get<float>();
+        if (isMushroom)
+        {
+            throttleInputAxis = -value.Get<float>();
+        }
+        else
+        {
+            throttleInputAxis = value.Get<float>();
+        }
     }
 
     private void AccelerateCar()

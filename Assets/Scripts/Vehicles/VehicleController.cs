@@ -68,8 +68,11 @@ public class VehicleController : MonoBehaviour
     public bool isBanana;
     public float totalRotate;
 
-    // 머쉬룸 적용
+    // 버섯 적용
     public bool isMushroom;
+
+    // 수박 적용
+    public bool isWatermelon;
 
     private void Start()
     {
@@ -129,6 +132,8 @@ public class VehicleController : MonoBehaviour
     private void Update()
     {
         carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
+        if (isWatermelon) carRigidbody.velocity = Vector3.zero;
+
         localVelocityX = transform.InverseTransformDirection(carRigidbody.velocity).x;
         localVelocityZ = transform.InverseTransformDirection(carRigidbody.velocity).z;
 
@@ -200,6 +205,8 @@ public class VehicleController : MonoBehaviour
         // 바나나 밟으면 회전
         if (isBanana)
         {
+            carRigidbody.velocity = Vector3.zero;
+
             float targetRotation = 360f * itemSO.rotationNum;
             float deltaRotation = targetRotation / itemSO.durationTime * Time.fixedDeltaTime;
             totalRotate += deltaRotation;

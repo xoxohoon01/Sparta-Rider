@@ -138,6 +138,7 @@ public class ItemContactController : MonoBehaviour
     // 수박 맞으면 정해진 시간동안 멈춤
     private void CollideWatermelon()
     {
+        vehicleController.isWatermelon = true;
         vehicleController.itemAccelerationMultiplier = 0f;
         if(CoWatermelon != null) StopCoroutine(CoWatermelon);
         CoWatermelon = StartCoroutine(CoCollideWatermelon());
@@ -146,6 +147,7 @@ public class ItemContactController : MonoBehaviour
     private IEnumerator CoCollideWatermelon()
     {
         yield return new WaitForSeconds(itemSO.durationTime);
+        vehicleController.isWatermelon = false;
         vehicleController.itemAccelerationMultiplier = 1f;
         enableItem();
         gameObject.SetActive(false);

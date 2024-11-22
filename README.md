@@ -51,6 +51,14 @@
 <a href="https://github.com/xoxohoon01/Sparta-Rider/graphs/contributors">
 <img src = "https://contrib.rocks/image?repo=xoxohoon01/Sparta-Rider">
 </a>
+<p>
+<a href="https://github.com/Seo600">
+<img src="https://github.com/Seo600.png" width="150">
+</a>
+<a href="https://github.com/simple2126">
+<img src="https://github.com/simple2126.png" width="150">
+</a>
+</p>
 
 ## 개발기간
 - 2024.11.15(금) ~ 2024.11.22(금)

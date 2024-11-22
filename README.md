@@ -62,7 +62,7 @@
 ## 주요기능
 |기능 이름|기능 설명|스크립트|
 |:---:|:---:|:---:|
-|자동차 움직임|- VehicleController라는 스크립트에서 차량의 움직임을 제어 - Update에서 전진, 후진, 스티어링, 드리프트 등의 기능 구현한다 - Input System을 통해 InputValue를 받아와, 상태를 변경|https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Vehicles/VehicleController.cs
+|자동차 움직임|- VehicleController라는 스크립트에서 차량의 움직임을 제어 - Update 에서 전진, 후진, 스티어링, 드리프트 등의 기능 구현 - Input System을 통해 InputValue를 받아와, 상태를 변경|https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Vehicles/VehicleController.cs
 
 
 ## 기술 스택

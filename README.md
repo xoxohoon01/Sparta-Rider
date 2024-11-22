@@ -63,7 +63,7 @@
 |기능 이름|기능 설명|스크립트|
 |:---:|:---:|:---:|
 |자동차 움직임|- VehicleController라는 스크립트에서 차량의 움직임을 제어 - Update 에서 전진, 후진, 스티어링, 드리프트 등의 기능 구현 - Input System을 통해 InputValue를 받아와, 상태를 변경|https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Vehicles/VehicleController.cs
-
+|UI 동적 로딩 |동적으로 UI를 생성하려면 프리팹으로 준비한 뒤, Instantiate를 사용해 필요한 위치에 추가해주면 된다.|https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/UI/UICreateMap.cs|
 
 ## 기술 스택
 - 언어

@@ -24,6 +24,7 @@
 2. 바나나 : 차량 3바퀴 회전
 
 ![72998A91-EDE3-4BA7-AA08-FA6F88E77E3E_4_5005_c](https://github.com/user-attachments/assets/f5d1cba1-82c8-4900-8508-0b46afc6d6d4)
+
 3. 컵 케익 : 차량 속도 절반 감속
 
 

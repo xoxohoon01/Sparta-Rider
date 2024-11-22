@@ -40,7 +40,16 @@
 
 
 ## 기술 스택
+- 언어
+- - C#
 - 게임 엔진
   - Unity - 2022.3.17f1
 - 버전 관리
   - GitHub
+- 개발 환경
+- - IDE
+- - - VisualStudio
+- - - Rider: JetBrains
+- - OS
+- - - Window 10
+- - - MacOS

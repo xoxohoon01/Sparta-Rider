@@ -19,12 +19,17 @@
 ### 아이템 소개
 #### 주행 방해 아이템
 1. 토마토 : 시야 방해
-2. 바나나 : 차량 3바퀴 회전
+2. 바나나 : 차량 3바퀴 회전 ![72998A91-EDE3-4BA7-AA08-FA6F88E77E3E_4_5005_c](https://github.com/user-attachments/assets/4c414351-230a-4993-8196-da9fbebf5706)
 3. 컵 케익 : 차량 속도 절반 감속
 4. 수박 : 차량 속도 감속
 5. 버섯 : 전진 후진 반전
 #### 주행 도움 아이템
 1. 커피 : 차량 속도 2배 증가
+
+### 플레이어 맵 제작
+#### 맵 제작 키
+![0376CC0C-5893-401E-8B03-5104B5CE5196](https://github.com/user-attachments/assets/95eaf234-137b-4d2c-809b-7cbcbcf26ff7)
+
 
 ## 팀 소개
 <a href="https://github.com/xoxohoon01/Sparta-Rider/graphs/contributors">

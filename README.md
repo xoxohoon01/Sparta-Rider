@@ -30,7 +30,7 @@
 
 ![ABF1B9FD-E525-47F8-A72D-2A894B5A3AFD_4_5005_c](https://github.com/user-attachments/assets/2ee024c6-59cc-414b-9555-1fdc2d2748f1)
 
-4. 수박 : 차량 속도 감속
+4. 수박 : 차량 3초 일시 정지
 
 ![B79F7128-2C81-4169-B806-C43028FD8EDC_4_5005_c](https://github.com/user-attachments/assets/e8ebbe15-5ed2-49ba-80c2-022780c5f655)
 
@@ -62,9 +62,7 @@
 ## 주요기능
 |기능 이름|기능 설명|스크립트|
 |:---:|:---:|:---:|
-|자동차 움직임|- VehicleController라는 스크립트에서 차량의 움직임을 제어
-- Update에서 전진, 후진, 스티어링, 드리프트 등의 기능 구현
-- Input System을 통해 InputValue를 받아와, 상태를 변경|
+|자동차 움직임|- VehicleController라는 스크립트에서 차량의 움직임을 제어 - Update에서 전진, 후진, 스티어링, 드리프트 등의 기능 구현 - Input System을 통해 InputValue를 받아와, 상태를 변경|https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Vehicles/VehicleController.cs
 
 
 ## 기술 스택

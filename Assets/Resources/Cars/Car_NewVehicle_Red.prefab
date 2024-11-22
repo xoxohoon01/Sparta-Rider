@@ -572,6 +572,7 @@ MonoBehaviour:
   itemSO: {fileID: 0}
   isBanana: 0
   totalRotate: 0
+  isMushroom: 0
 --- !u!114 &1470578844254670
 MonoBehaviour:
   m_ObjectHideFlags: 0

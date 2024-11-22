@@ -135,7 +135,7 @@ public class VehicleController : MonoBehaviour
         CheckGround();
 
         // 엔진소리
-        if (carRigidbody.velocity.magnitude > 0)
+        if (carRigidbody.velocity.magnitude > 0.5f)
         {
             if (!engineAudioSource.isPlaying)
             {

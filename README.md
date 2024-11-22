@@ -20,6 +20,7 @@
 #### 주행 방해 아이템
 1. 토마토 : 시야 방해
 
+![C8E42977-8A0E-4DB9-9B58-3D0CF804AB94_4_5005_c](https://github.com/user-attachments/assets/c0030f88-45d6-440b-b9b3-99419ed9173b)
 
 2. 바나나 : 차량 3바퀴 회전
 
@@ -27,12 +28,15 @@
 
 3. 컵 케익 : 차량 속도 절반 감속
 
+![ABF1B9FD-E525-47F8-A72D-2A894B5A3AFD_4_5005_c](https://github.com/user-attachments/assets/2ee024c6-59cc-414b-9555-1fdc2d2748f1)
 
 4. 수박 : 차량 속도 감속
 
+![B79F7128-2C81-4169-B806-C43028FD8EDC_4_5005_c](https://github.com/user-attachments/assets/e8ebbe15-5ed2-49ba-80c2-022780c5f655)
 
 5. 버섯 : 전진 후진 반전
 
+![FD4B7B95-A014-490A-B9BC-1C831097C7D9_4_5005_c](https://github.com/user-attachments/assets/f109ef8c-04ab-47eb-a19d-c699945c0e23)
 
 #### 주행 도움 아이템
 1. 커피 : 차량 속도 2배 증가

@@ -27,7 +27,9 @@
 1. 커피 : 차량 속도 2배 증가
 
 ## 팀 소개
-
+<a href="https://github.com/xoxohoon01">
+<img src = "https://github.com/Seo600">
+</a>
 
 ## 개발기간
 - 2024.11.15(금) ~ 2024.11.22(금)

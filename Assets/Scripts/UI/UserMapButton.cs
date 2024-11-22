@@ -13,6 +13,7 @@ public class UserMapButton : MonoBehaviour
     
     public void OnClick()
     {
+        GameManager.Instance.userMapName = index;
         GameManager.Instance.LoadUserMapScene();
     }
 }

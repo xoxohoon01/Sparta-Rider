@@ -5,10 +5,12 @@ using System.IO;
 
 public class UserMapInit : MonoBehaviour
 {
-    private string mapName = "circle";
+    public string mapName;
+
     // Start is called before the first frame update
     void Awake()
     {
+        mapName = GameManager.Instance.userMapName;
         string path = $"./Assets/Resources/Maps/{mapName}.json";
         string json = File.ReadAllText(path);
         MapData mapData = JsonUtility.FromJson<MapData>(json);

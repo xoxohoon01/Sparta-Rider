@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using System.IO;
+using UnityEditor;
 
 [Serializable]
 public class MapData
@@ -68,5 +69,8 @@ public class FinishMapEdit : MonoBehaviour
         string json = JsonUtility.ToJson(mapData);
         string path = $"./Assets/Resources/Maps/{mapData.mapName}.json";
         File.WriteAllText(path, json);
+
+        // TODO : refresh 한번
+        AssetDatabase.Refresh();
     }
 }

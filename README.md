@@ -48,15 +48,18 @@
 ![0376CC0C-5893-401E-8B03-5104B5CE5196](https://github.com/user-attachments/assets/95eaf234-137b-4d2c-809b-7cbcbcf26ff7)
 
 ## 팀 소개
-<a href="https://github.com/xoxohoon01/Sparta-Rider/graphs/contributors">
-<img src = "https://contrib.rocks/image?repo=xoxohoon01/Sparta-Rider">
-</a>
 <p>
 <a href="https://github.com/Seo600">
 <img src="https://github.com/Seo600.png" width="150">
 </a>
 <a href="https://github.com/simple2126">
 <img src="https://github.com/simple2126.png" width="150">
+</a>
+ <a href="https://github.com/tive1021">
+<img src="https://github.com/tive1021.png" width="150">
+</a>
+ <a href="https://github.com/xoxohoon01">
+<img src="https://github.com/xoxohoon01.png" width="150">
 </a>
 </p>
 

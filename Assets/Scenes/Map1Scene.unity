@@ -217,7 +217,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &497728470
+--- !u!1001 &1077875564
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -267,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6128040191353947079, guid: 35131494970fdb24db385e16594d1480, type: 3}
       propertyPath: m_Name
-      value: NonBoxItemManager
+      value: ItemManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -528,5 +528,5 @@ SceneRoots:
   - {fileID: 2067526}
   - {fileID: 8075047492365512243}
   - {fileID: 1956077651}
-  - {fileID: 497728470}
   - {fileID: 1632078368}
+  - {fileID: 1077875564}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ac2fab40403d342a10d4284b27bc00, type: 3}
   m_Name: MushroomSO
   m_EditorClassIdentifier: 
-  itemName: 0
-  itemType: 0
+  itemName: 5
+  itemType: 1
   durationTime: 3
   rotationNum: 0
   speed: 0

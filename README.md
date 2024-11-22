@@ -68,7 +68,7 @@
 |아이템효과|아이템에 충돌이 발생할 때 Randerer 및 Collider를 비활성 시킵니다. 아이템 효과를 발동시킵니다.|[ItemContactController.cs](https://github.com/xoxohoon01/SpartaRider/blob/dev/Assets/Scripts/Item/Controller/ItemContactController.cs)
 |맵  - 골인 지점, 중간 포인트|골인지점 - 중간 포인트를 거쳤는지 HashSet로 검사. 모든 중간 포인트를 지났다면 골인 지점을 통과했을 때 Lap++/ 스폰포인트 - 마지막으로 거친 중간 포인트 or 골인 지점이 스폰 포인트가 된다.|[MidPointManager.cs](https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Managers/MidPointManager.cs)
 |맵  - UI|현재 Lap - 통과한 골인 지점마다 ++/ Lap Time - 골인 지점을 지난 이후로 얼마나 시간이 흘렀는지 Time.time - lapStartTime으로 측정/ 현재 속도 - velocity의 크기를 받아와 소수점을 버린 숫자를 표시|[MidPointManager.cs](https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/Managers/MidPointManager.cs)
-|맵 에디터|왼쪽 버튼 - 위의 카테고리를 클릭한 후 아래의 요소를 선택하면 마우스를 따라다니는 요소들 생성/ 오른쪽 설명 - 위에는 카메라 or 조작 설명 아래에는 맵 저장 버튼을 통해 json파일로 맵을 저장합니다.|[PrefabSpawner.cs](https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/MapEditor/PrefabSpawner.cs)
+|맵 에디터|트랙 생성 버튼 - 위의 카테고리를 클릭한 후 아래의 요소를 선택하면 마우스를 따라다니는 요소들 생성/ 트랙 조작 - 위에는 카메라 or 조작 설명 아래에는 맵 저장 버튼을 통해 json파일로 맵을 저장합니다.|[PrefabSpawner.cs](https://github.com/xoxohoon01/Sparta-Rider/blob/dev/Assets/Scripts/MapEditor/PrefabSpawner.cs)
 
 ## 기술 스택
 - 언어

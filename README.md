@@ -60,7 +60,11 @@
 ![77E4DFE7-2DAB-40F1-A306-EF635C39B758](https://github.com/user-attachments/assets/7d1ae2a0-bc6d-41f3-bc69-79c84f5b3c82)
 
 ## 주요기능
-### class VehicleController
+|기능 이름|기능 설명|스크립트|
+|:---:|:---:|:---:|
+|자동차 움직임|- VehicleController라는 스크립트에서 차량의 움직임을 제어
+- Update에서 전진, 후진, 스티어링, 드리프트 등의 기능 구현
+- Input System을 통해 InputValue를 받아와, 상태를 변경|
 
 
 ## 기술 스택
